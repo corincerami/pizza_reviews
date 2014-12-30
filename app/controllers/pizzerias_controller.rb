@@ -11,7 +11,7 @@ class PizzeriasController < ApplicationController
       flash[:notice] = 'Pizzeria created'
       redirect_to pizzeria_path(@pizzeria)
     else
-      render "new"
+      render :new
     end
   end
 
@@ -32,6 +32,8 @@ class PizzeriasController < ApplicationController
     if @pizzeria.update(pizzeria_params)
       flash[:notice] = "Pizzeria updated"
       redirect_to pizzeria_path(@pizzeria)
+    else
+      render :edit
     end
   end
 

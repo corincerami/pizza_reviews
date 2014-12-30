@@ -31,4 +31,24 @@ feature 'User edits a pizzeria' do
     expect(page).to have_content "New state"
     expect(page).to have_content "New zip"
   end
+
+  it 'fills out the form incorrectly' do
+    user = FactoryGirl.create(:user)
+    pizzeria = FactoryGirl.create(:pizzeria)
+    sign_in(user)
+    visit edit_pizzeria_path(pizzeria)
+
+    fill_in "Name", with: ""
+    fill_in "Street", with: ""
+    fill_in "City", with: ""
+    fill_in "State", with: ""
+    fill_in "Zip code", with: ""
+    click_on "Update Pizzeria"
+
+    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "Street can't be blank"
+    expect(page).to have_content "City can't be blank"
+    expect(page).to have_content "State can't be blank"
+    expect(page).to have_content "Zip code can't be blank"
+  end
 end

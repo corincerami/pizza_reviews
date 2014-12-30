@@ -16,8 +16,8 @@ feature 'user registers', %Q{
 
     visit new_user_registration_path
 
-    fill_in 'First Name', with: user.first_name
-    fill_in 'Last Initial', with: user.last_initial
+    fill_in 'First name', with: user.first_name
+    fill_in 'Last initial', with: user.last_initial
     fill_in 'Username', with: user.username
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password

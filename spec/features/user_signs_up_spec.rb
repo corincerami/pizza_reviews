@@ -32,8 +32,11 @@ feature 'user registers', %Q{
   scenario 'provide invalid registration information' do
     visit new_user_registration_path
 
+    fill_in 'Last initial', with: 'HHH'
+
     click_button 'Sign up'
-    expect(page).to have_content("can't be blank")
+    expect(page).to have_content("Username can't be blank")
     expect(page).to_not have_content('Sign Out')
+    expect(page).to have_content("Last initial is too long (maximum is 1 character)")
   end
 end

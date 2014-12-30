@@ -11,8 +11,8 @@ require 'rails_helper'
 
 feature 'User views all pizzerias' do
 	it 'lists all pizzerias on one page' do
-		pizzera_1 = FactoryGirl.create(:pizzeria)
-		pizzera_2 = FactoryGirl.create(:pizzeria)
+		pizzeria_1 = FactoryGirl.create(:pizzeria)
+		pizzeria_2 = FactoryGirl.create(:pizzeria)
 
 		visit pizzerias_path
 

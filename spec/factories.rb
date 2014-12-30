@@ -1,5 +1,3 @@
-require 'factory_girl'
-
 FactoryGirl.define do
   factory :user do
     sequence(:email) {|n| "user#{n}@example.com" }
@@ -8,11 +6,10 @@ FactoryGirl.define do
   end
 
   factory :pizzeria do
-		sequence(:name) { |n| "#{n} Regina Pizzeria"}
-		sequence(:street) { |n| street "#{n} Thacher St" }
-		city 'Boston'
-		state 'MA'
-		zip_code '02113'
+    sequence(:name) { |n| "#{n} Regina Pizzeria"}
+    sequence(:street) { |n| "#{n} Thacher St" }
+    city 'Boston'
+    state 'MA'
+    zip_code '02113'
   end
-
 end

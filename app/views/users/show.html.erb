@@ -2,3 +2,8 @@
 <div>
   <%= @bio %>
 </div>
+<div>
+  <% if current_user %>
+  <li><%= link_to 'Edit Profile', edit_user_registration_path(@user) %></li>
+  <% end %>
+</div>

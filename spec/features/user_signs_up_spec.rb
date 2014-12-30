@@ -1,19 +1,18 @@
 require "rails_helper"
 
-feature "user registers", %Q{
+feature "user registers", %{
   As a visitor
   I want to register
   So that I can create an account
 } do
 
   # Acceptance Criteria:
-  # I must specify a unique username, unique email address, 
+  # I must specify a unique username, unique email address,
   #   valid password, and password confirmation
-  # If I don"t specify the required information, 
+  # If I don"t specify the required information,
   #   I am presented with an error message
   # I may specify my first name and last initial.
   # Last initial must be 1 one letter
-
 
   scenario "provide valid registration information" do
     user = FactoryGirl.build(:user)
@@ -41,7 +40,7 @@ feature "user registers", %Q{
     click_button "Sign up"
     expect(page).to have_content("Username can't be blank")
     expect(page).to_not have_content("Sign Out")
-    expect(page).to have_content("Last initial is too long 
+    expect(page).to have_content("Last initial is too long
                                  (maximum is 1 character)")
   end
 

@@ -32,7 +32,8 @@ feature "user profile", %{
 
     sign_in user
 
-    visit user_path(user)
+    visit root_path
+    click_on user.username
 
     expect(page).to have_content user.username
     expect(page).to have_content user.bio

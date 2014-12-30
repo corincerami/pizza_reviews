@@ -64,4 +64,10 @@ feature 'User created a pizzeria' do
 
     expect(page).to have_content "Street has already been taken"
   end
+
+  it 'tries to create a pizzeria without signing in' do
+    visit new_pizzeria_path
+
+    expect(page).to have_content "You need to sign in or sign up before continuing"
+  end
 end

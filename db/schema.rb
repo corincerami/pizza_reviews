@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229185511) do
+ActiveRecord::Schema.define(version: 20141230195400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pizzerias", force: :cascade do |t|
+    t.string "name",     null: false
+    t.string "street",   null: false
+    t.string "city",     null: false
+    t.string "state",    null: false
+    t.string "zip_code", null: false
+    t.string "phone"
+    t.string "website"
+  end
+
+  add_index "pizzerias", ["street", "city", "state"], name: "address", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

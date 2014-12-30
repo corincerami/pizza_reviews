@@ -37,6 +37,14 @@ class PizzeriasController < ApplicationController
     end
   end
 
+  def destroy
+    @pizzeria = Pizzeria.find(params[:id])
+    if @pizzeria.destroy
+      flash[:notice] = "Pizzeria Deleted"
+      redirect_to pizzerias_path
+    end
+  end
+
   private
 
   def pizzeria_params

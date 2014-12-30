@@ -15,7 +15,9 @@ feature 'User edits a pizzeria' do
     user = FactoryGirl.create(:user)
     pizzeria = FactoryGirl.create(:pizzeria)
     sign_in(user)
-    visit edit_pizzeria_path(pizzeria)
+    visit pizzeria_path(pizzeria)
+
+    click_on "Edit Pizzeria"
 
     fill_in "Name", with: "New pizzeria"
     fill_in "Street", with: "New street"
@@ -36,7 +38,9 @@ feature 'User edits a pizzeria' do
     user = FactoryGirl.create(:user)
     pizzeria = FactoryGirl.create(:pizzeria)
     sign_in(user)
-    visit edit_pizzeria_path(pizzeria)
+    visit pizzeria_path(pizzeria)
+
+    click_on "Edit Pizzeria"
 
     fill_in "Name", with: ""
     fill_in "Street", with: ""

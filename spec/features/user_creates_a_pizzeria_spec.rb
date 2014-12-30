@@ -5,9 +5,10 @@ require 'rails_helper'
 # So that I can share a pizzeria's information
 
 # Acceptance Criteria
-# - Pizzerias must have a name, city.
-# - Pizzerias may optionally a phone number, description, website, photo
+# - Pizzerias must have a name, street, city, state, zip code.
+# - Pizzerias may optionally a phone number, description, website.
 # - Pizzerias' addresses must be unique
+# - Users must be signed in to create a pizzeria
 
 feature 'User created a pizzeria' do
   it 'fills out the form with valid information' do

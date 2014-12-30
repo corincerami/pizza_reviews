@@ -10,6 +10,7 @@ feature 'user registers', %Q{
   # I must specify a unique username, unique email address, valid password, and password confirmation
   # If I don't specify the required information, I am presented with an error message
   # I may specify my first name and last initial.
+  # Last initial must be 1 one letter
 
   scenario 'provide valid registration information' do
     user = FactoryGirl.build(:user)
@@ -54,5 +55,22 @@ feature 'user registers', %Q{
     click_button 'Sign up'
 
     expect(page).to have_content("Username has already been taken")
+  end
+
+  scenario 'user enters non letter for last initial' do
+    user = FactoryGirl.build(:user)
+
+    visit new_user_registration_path
+
+    fill_in 'First name', with: user.first_name
+    fill_in 'Last initial', with: "1"
+    fill_in 'Username', with: user.username
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    fill_in 'Password confirmation', with: user.password
+
+    click_button 'Sign up'
+
+    expect(page).to have_content('Last initial only allows letters')
   end
 end

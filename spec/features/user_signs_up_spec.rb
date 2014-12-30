@@ -39,4 +39,20 @@ feature 'user registers', %Q{
     expect(page).to_not have_content('Sign Out')
     expect(page).to have_content("Last initial is too long (maximum is 1 character)")
   end
+
+  scenario 'username already taken' do
+    existing_user = FactoryGirl.create(:user)
+
+    visit new_user_registration_path
+
+    fill_in 'First name', with: existing_user.first_name
+    fill_in 'Last initial', with: existing_user.last_initial
+    fill_in 'Username', with: existing_user.username
+    fill_in 'Email', with: existing_user.email
+    fill_in 'Password', with: existing_user.password
+    fill_in 'Password confirmation', with: existing_user.password
+    click_button 'Sign up'
+
+    expect(page).to have_content("Username has already been taken")
+  end
 end

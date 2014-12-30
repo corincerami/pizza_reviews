@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true
+  validates :username, uniqueness: true
   validates :last_initial, length: {maximum: 1}
 end

@@ -23,6 +23,18 @@ class PizzeriasController < ApplicationController
     @pizzerias = Pizzeria.all
   end
 
+  def edit
+    @pizzeria = Pizzeria.find(params[:id])
+  end
+
+  def update
+    @pizzeria = Pizzeria.find(params[:id])
+    if @pizzeria.update(pizzeria_params)
+      flash[:notice] = "Pizzeria updated"
+      redirect_to pizzeria_path(@pizzeria)
+    end
+  end
+
   private
 
   def pizzeria_params

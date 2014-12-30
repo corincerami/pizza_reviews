@@ -23,7 +23,7 @@ feature 'User created a pizzeria' do
     fill_in "Zip code",     with: "07110"
     fill_in "Phone number", with: "973-667-7296"
     fill_in "Website",      with: "www.google.com"
-    click_on "Create pizzeria"
+    click_on "Create Pizzeria"
 
     expect(page).to have_content "Pizzeria created"
     expect(page).to have_content "Regina Pizzeria"
@@ -38,7 +38,7 @@ feature 'User created a pizzeria' do
     sign_in(user)
     visit new_pizzeria_path
 
-    click_on "Create pizzeria"
+    click_on "Create Pizzeria"
 
     expect(page).to have_content "Name can't be blank"
     expect(page).to have_content "Street can't be blank"
@@ -61,7 +61,7 @@ feature 'User created a pizzeria' do
     fill_in "Zip code",     with: "07110"
     fill_in "Phone number", with: "973-667-7296"
     fill_in "Website",      with: "www.google.com"
-    click_on "Create pizzeria"
+    click_on "Create Pizzeria"
 
     expect(page).to have_content "Street has already been taken"
   end

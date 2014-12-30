@@ -1,0 +1,32 @@
+<% if @pizzeria.errors.any? %>
+  <% @pizzeria.errors.full_messages.each do |msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_for @pizzeria do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :street %>
+  <%= f.text_field :street %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zip_code %>
+  <%= f.text_field :zip_code %>
+
+  <%= f.label :phone, "Phone number" %>
+  <%= f.text_field :phone %>
+
+  <%= f.label :website %>
+  <%= f.text_field :website %>
+
+  <%= f.submit "Create pizzeria" %>
+<% end %>

@@ -54,7 +54,7 @@ feature 'User created a pizzeria' do
 
     visit new_pizzeria_path
 
-    fill_in "Name",         with: "Boston Kitchen"
+    fill_in "Name",         with: pizzeria.name
     fill_in "Street",       with: pizzeria.street
     fill_in "City",         with: "Boston"
     fill_in "State",        with: "MA"

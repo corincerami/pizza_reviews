@@ -8,3 +8,8 @@ require "rails_helper"
 # I may edit a review that I posted
 # I must provide valid information
 # I am presented with errors if my information is invalid
+
+feature "User created a review" do
+	it "fills out a form wil valid information" do
+
+end

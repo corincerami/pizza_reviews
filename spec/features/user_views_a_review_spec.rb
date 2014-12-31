@@ -8,10 +8,11 @@ require "rails_helper"
 # - User sees the name of the pizzeria and address
 # - User can click on a pizzeria review on the pizzeria show page and see pizza slice reviews at that pizzeria.
 # - User can see all slice ratings from this view
+# - User can see who created the review
 
 
-feature "User views all pizza slice reviews of a certain pizzeria" do
-	it "shows all pizza slice reviews with rating" do
+feature "User views a review" do
+	it "sees the review data on a page" do
 		review = FactoryGirl.create(:review)
 		pizzeria = review.pizzeria
 		visit pizzerias_path
@@ -23,7 +24,9 @@ feature "User views all pizza slice reviews of a certain pizzeria" do
 		expect(page).to have_content pizzeria.name
 		expect(page).to have_content pizzeria.street
 		expect(page).to have_content review.rating
-
+		expect(page).to have_content review.created_at
+		expect(page).to have_content review.updated_at
+		expect(page).to have_content review.user.email
 	end
 end
 

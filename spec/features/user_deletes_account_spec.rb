@@ -18,7 +18,7 @@ feature "user profile", %{
       visit edit_user_registration_path
 
       click_button "Cancel my account"
-      
+
       expect(page).to have_content("Your account has been successfully
                                     cancelled")
     end

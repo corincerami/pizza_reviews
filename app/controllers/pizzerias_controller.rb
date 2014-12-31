@@ -8,7 +8,7 @@ class PizzeriasController < ApplicationController
   def create
     @pizzeria = Pizzeria.new(pizzeria_params)
     if @pizzeria.save
-      flash[:notice] = 'Pizzeria created'
+      flash[:notice] = "Pizzeria created"
       redirect_to pizzeria_path(@pizzeria)
     else
       render :new
@@ -50,6 +50,7 @@ class PizzeriasController < ApplicationController
   private
 
   def pizzeria_params
-    params.require(:pizzeria).permit(:name, :street, :city, :state, :zip_code, :phone, :website)
+    params.require(:pizzeria).permit(:name, :street, :city, :state, 
+                                     :zip_code, :phone, :website)
   end
 end

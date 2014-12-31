@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 # As a User
 # I want to edit a pizzeria
@@ -10,8 +10,8 @@ require 'rails_helper'
 # - I will see a confirmation message that my pizzeria was edited
 # - I will see an error message if I fill out the form incorrectly
 
-feature 'User edits a pizzeria' do
-  it 'fills out new valid information' do
+feature "User edits a pizzeria" do
+  it "fills out new valid information" do
     user = FactoryGirl.create(:user)
     pizzeria = FactoryGirl.create(:pizzeria)
     sign_in(user)
@@ -34,7 +34,7 @@ feature 'User edits a pizzeria' do
     expect(page).to have_content "New zip"
   end
 
-  it 'fills out the form incorrectly' do
+  it "fills out the form incorrectly" do
     user = FactoryGirl.create(:user)
     pizzeria = FactoryGirl.create(:pizzeria)
     sign_in(user)

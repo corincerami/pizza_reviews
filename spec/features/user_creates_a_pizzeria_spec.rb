@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 # As a user
 # I want to add a pizzeria
@@ -10,8 +10,8 @@ require 'rails_helper'
 # - Pizzerias' addresses must be unique
 # - Users must be signed in to create a pizzeria
 
-feature 'User created a pizzeria' do
-  it 'fills out the form with valid information' do
+feature "User creates a pizzeria" do
+  it "fills out the form with valid information" do
     user = FactoryGirl.create(:user)
     sign_in(user)
     visit new_pizzeria_path
@@ -33,7 +33,7 @@ feature 'User created a pizzeria' do
     expect(page).to have_content "07110"
   end
 
-  it 'enters invalid information' do
+  it "enters invalid information" do
     user = FactoryGirl.create(:user)
     sign_in(user)
     visit new_pizzeria_path
@@ -47,7 +47,7 @@ feature 'User created a pizzeria' do
     expect(page).to have_content "Zip code can't be blank"
   end
 
-  it 'enters a duplicate address' do
+  it "enters a duplicate address" do
     user = FactoryGirl.create(:user)
     sign_in(user)
     pizzeria = FactoryGirl.create(:pizzeria)
@@ -66,9 +66,10 @@ feature 'User created a pizzeria' do
     expect(page).to have_content "Street has already been taken"
   end
 
-  it 'tries to create a pizzeria without signing in' do
+  it "tries to create a pizzeria without signing in" do
     visit new_pizzeria_path
 
-    expect(page).to have_content "You need to sign in or sign up before continuing"
+    expect(page).to have_content "You need to sign in or 
+                                  sign up before continuing"
   end
 end

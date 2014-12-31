@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 # As a User
 # I want to view a pizzeria's details and reviews
@@ -9,7 +9,7 @@ require 'rails_helper'
 # - I can all of the reviews for this pizzeria
 
 feature "User views a pizzeria's details" do
-  it 'sees the details on the page' do
+  it "sees the details on the page" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)

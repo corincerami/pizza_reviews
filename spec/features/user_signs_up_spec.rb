@@ -16,7 +16,6 @@ feature "user registers", %{
 
   scenario "provide valid registration information" do
     user = FactoryGirl.build(:user)
-
     visit new_user_registration_path
 
     fill_in "First name", with: user.first_name

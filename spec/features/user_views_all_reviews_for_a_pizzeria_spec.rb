@@ -20,6 +20,9 @@ feature "User views all pizza slice reviews of a certain pizzeria" do
 		click_on review.title
 
 		expect(page).to have_content review.body
+		expect(page).to have_content pizzeria.name
+		expect(page).to have_content pizzeria.street
+		expect(page).to have_content review.rating
 
 	end
 end

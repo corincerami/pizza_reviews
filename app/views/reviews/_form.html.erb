@@ -1,0 +1,12 @@
+<%= form_for [@pizzeria, @review] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+
+  <%= f.label :rating %>
+  <%= f.select(:rating, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5]]) %>
+
+  <%= f.submit %>
+<% end %>

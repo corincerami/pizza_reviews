@@ -1,3 +1,10 @@
+<% if @review.errors.any? %>
+ <% @review.errors.full_messages.each do |msg| %>
+   <div>
+     <%= msg %>
+    </div>
+  <% end %>
+<% end %>
 <%= form_for [@pizzeria, @review] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -6,7 +13,7 @@
   <%= f.text_field :body %>
 
   <%= f.label :rating %>
-  <%= f.select(:rating, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5]]) %>
+  <%= f.select(:rating, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5]], include_blank: true) %>
 
   <%= f.submit %>
 <% end %>

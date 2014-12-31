@@ -17,6 +17,8 @@ class ReviewsController < ApplicationController
 		if @review.save
 			flash[:notice] = "Review created"
 			redirect_to pizzeria_review_path(@pizzeria, @review)
+		else
+			render :new
 		end
 
 	end

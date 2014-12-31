@@ -1,5 +1,5 @@
 <% @pizzerias.each do |pizzeria| %>
   <div class='pizzeria'>
-    <%= pizzeria.name %>
+    <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>
   </div>
 <% end %>

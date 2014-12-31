@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates :last_initial, length: { maximum: 1 }
   validates :last_initial, format: { with: /\A[a-zA-Z]+\z/,
                                      message: "only allows letters" }
+
+  def name
+    "#{first_name} #{last_initial}."
+  end
 end

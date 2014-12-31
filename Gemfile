@@ -27,6 +27,8 @@ gem 'foundation-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Make it So - Dan
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'pry'
+  gem 'valid_attribute'
 end
 
 group :test do

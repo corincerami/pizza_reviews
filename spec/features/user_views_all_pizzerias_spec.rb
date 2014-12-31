@@ -11,12 +11,12 @@ require 'rails_helper'
 
 feature 'User views all pizzerias' do
 	it 'lists all pizzerias on one page' do
-		pizzeria_1 = FactoryGirl.create(:pizzeria)
-		pizzeria_2 = FactoryGirl.create(:pizzeria)
+		pizzerias = FactoryGirl.create_list(:pizzeria, 2)
 
-		visit pizzerias_path
+    visit pizzerias_path
 
-		expect(page).to have_content pizzeria_1.name
-		expect(page).to have_content pizzeria_2.name
+    pizzerias.each do |pizzeria|
+      expect(page).to have_content(pizzeria.name)
+    end
 	end
 end

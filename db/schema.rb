@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141230195400) do
     t.string "website"
   end
 
-  add_index "pizzerias", ["street", "city", "state"], name: "address", unique: true, using: :btree
+  add_index "pizzerias", ["name", "street", "city", "state"], name: "address", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

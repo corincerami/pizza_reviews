@@ -5,5 +5,5 @@ class Pizzeria < ActiveRecord::Base
   validates :state, presence: true
   validates :zip_code, presence: true
 
-  validates_uniqueness_of :street, scope: [:city, :state]
+  validates_uniqueness_of :name, scope: [:street, :city, :state]
 end

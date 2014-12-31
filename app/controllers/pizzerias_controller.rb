@@ -1,5 +1,5 @@
 class PizzeriasController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @pizzeria = Pizzeria.new
@@ -42,6 +42,8 @@ class PizzeriasController < ApplicationController
     if @pizzeria.destroy
       flash[:notice] = "Pizzeria Deleted"
       redirect_to pizzerias_path
+    else
+      render :show
     end
   end
 

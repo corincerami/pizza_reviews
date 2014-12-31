@@ -1,12 +1,4 @@
 require "rails_helper"
-# As a user
-# I want to edit my review
-# So that I can correct or update my review
-
-# Acceptance Criteria
-# I may edit a review that I posted
-# I must provide valid information
-# I am presented with errors if my information is invalid
 
 feature "User creates a review" do
 	it "fills out a form with valid information" do
@@ -37,4 +29,14 @@ feature "User creates a review" do
 		expect(page).to have_content "Title can't be blank"
 		expect(page).to have_content "Rating can't be blank"
 	end
+
+	it "attempts to create a review without signing in" do
+		pizzeria = FactoryGirl.create(:pizzeria)
+
+		visit pizzeria_path(pizzeria)
+		click_on "Create Review"
+
+		expect(page).to have_content "You need to sign in or sign up"
+	end
+
 end

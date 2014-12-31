@@ -19,7 +19,7 @@ feature "user profile", %{
   scenario "user may edit their own profile" do
     sign_in user
 
-    visit edit_user_registration_path(user)
+    visit edit_user_registration_path
 
     fill_in "Username", with: user.username
     fill_in "First name", with: "Liz"

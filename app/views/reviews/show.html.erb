@@ -6,6 +6,7 @@
 
 <p><%= "#{@review.rating} stars" %></p>
 <p><%= @review.body %></p>
+<p><%= link_to("Edit Review", edit_pizzeria_review_path(@pizzeria, @review)) %></p>
 <p><%= @review.updated_at %></p>
 <p><%= @review.created_at %></p>
 <p><%= @review.user.email %></p>

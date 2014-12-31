@@ -13,21 +13,33 @@ class ReviewsController < ApplicationController
 
 	def create
 		@pizzeria = Pizzeria.find(params[:pizzeria_id])
-		@review = Review.new(review_params)
-		@review.pizzeria_id = @pizzeria.id
-		@review.user_id = current_user.id
+		@review = @pizzeria.reviews.build(review_params)
+		@review.user = current_user
 		if @review.save
 			flash[:notice] = "Review created"
 			redirect_to pizzeria_review_path(@pizzeria, @review)
 		else
 			render :new
 		end
+	end
 
+	def edit
+		@review = Review.find(params[:id])
+		@pizzeria = Pizzeria.find(@review.pizzeria_id)
+	end
+
+	def update
+		@review = Review.find(params[:id])
+		@pizzeria = Pizzeria.find(@review.pizzeria_id)
+		if @review.update(review_params)
+			flash[:notice] = "Review Updated Sucessfully"
+			redirect_to pizzeria_review_path(@pizzeria, @review)
+		end
 	end
 	
 	private
 
 	def review_params
-		review_params = params.require(:review).permit(:title, :body, :rating, :pizzeria_id)
+		review_params = params.require(:review).permit(:title, :body, :rating)
 	end
 end

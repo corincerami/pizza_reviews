@@ -15,14 +15,16 @@ FactoryGirl.define do
 
   factory :review do
     sequence(:title) { |n| "#{n} This is my pizza slice" }
-    sequence(:body) { |n| "#{n} Literally stumbled upon this place. I had been hearing 
-      recommendations about Regina for months, and the one time I get lost in Boston 
-      dumps me right on their doorstep. You can't ignore fate, even when it's 
+    sequence(:body) { |n| "#{n} Literally stumbled upon this place. I had been hearing
+      recommendations about Regina for months, and the one time I get lost in Boston
+      dumps me right on their doorstep. You can't ignore fate, even when it's
       only 5pm!" }
     rating 4
-    after(:build) do |review|
-      review.pizzeria = FactoryGirl.create(:pizzeria)
-      review.user = FactoryGirl.create(:user)
-    end  
+    # after(:build) do |review|
+    #   review.pizzeria = FactoryGirl.create(:pizzeria)
+    #   review.user = FactoryGirl.create(:user)
+    # end
+    user
+    pizzeria
   end
 end

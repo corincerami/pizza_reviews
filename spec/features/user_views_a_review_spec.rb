@@ -29,4 +29,3 @@ feature "User views a review" do
 		expect(page).to have_content review.user.email
 	end
 end
-

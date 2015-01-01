@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :pizzerias do
-  	resources :reviews
+    resources :reviews
   end
-  
+
   resources :users, only: :show
 
 end

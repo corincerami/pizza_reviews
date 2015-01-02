@@ -13,6 +13,7 @@ feature "User creates a review" do
     fill_in "Body", with: "text text"
     select 5, from: "Rating"
     click_on "Create Review"
+
     expect(page).to have_content "Pepperoni"
     expect(page).to have_content "text text"
     expect(page).to have_content "5 stars"

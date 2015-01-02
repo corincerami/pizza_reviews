@@ -1,5 +1,6 @@
 class Pizzeria < ActiveRecord::Base
   has_many :reviews
+  has_many :comments, through: :reviews
 
   validates :name, presence: true
   validates :street, presence: true

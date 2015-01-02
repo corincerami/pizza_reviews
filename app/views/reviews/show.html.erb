@@ -1,19 +1,43 @@
+<h1><%= @review.title %></h1>
+<% if @comment.errors.any? %>
+  <% @comment.errors.full_messages.each do |msg| %>
+  <div>
+    <%= msg %>
+  </div>
+  <% end %>
+<% end %>
+
 <div class="row">
-  <div class="small-12 medium-6 columns">
-    <h1><%= @review.title %></h1>
+<div class="small-12 medium-6 columns">
 
-    <h2><%= link_to(@review.pizzeria.name, pizzeria_path(@review.pizzeria)) %></h2>
-    <h3><%= @review.pizzeria.street %><br/>
-      	<%= @review.pizzeria.address %></h3>
+<h2><%= link_to(@review.pizzeria.name, pizzeria_path(@review.pizzeria)) %></h2>
+<h3><%= @review.pizzeria.street %><br/>
+    <%= @review.pizzeria.address %></h3>
 
-    <p><%= "#{@review.rating} stars" %></p>
-    <p><%= @review.body %></p>
-    <% if current_user == @review.user %>
-      <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
-      <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
-    <% end %>
-    <p><%= @review.updated_at %></p>
-    <p><%= @review.created_at %></p>
-    <p><%= @review.user.email %></p>
+<p><%= "#{@review.rating} stars" %></p>
+<p><%= @review.body %></p>
+<% if current_user == @review.user %>
+  <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
+  <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
+<% end %>
+  <p><%= @review.updated_at %></p>
+  <p><%= @review.created_at %></p>
+  <p><%= @review.user.email %></p>
+
+<%= form_for [@review, @comment] do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :body, "Comment" %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit Comment" %>
+  </div>
+<% end %>
   </div>
 </div>

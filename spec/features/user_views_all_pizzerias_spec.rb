@@ -10,14 +10,14 @@ require "rails_helper"
 # - [ ] Each review will be represented by a thumbnail and rating
 
 feature "User views all pizzerias" do
-	it "lists all pizzerias on one page" do
-		pizzerias = FactoryGirl.create_list(:pizzeria, 2)
+  it "lists all pizzerias on one page" do
+    pizzerias = FactoryGirl.create_list(:pizzeria, 2)
     pizzerias.each do |pizzeria|
-      reviews = FactoryGirl.create_list(:review, 3, pizzeria: pizzeria)
+      FactoryGirl.create_list(:review, 3, pizzeria: pizzeria)
     end
 
     visit pizzerias_path
-    
+
     pizzerias.each do |pizzeria|
       expect(page).to have_content(pizzeria.name)
       pizzeria.reviews.each do |review|
@@ -26,5 +26,5 @@ feature "User views all pizzerias" do
       end
       expect(pizzeria.reviews.last.title).to appear_before(pizzeria.reviews.first.title)
     end
-	end
+  end
 end

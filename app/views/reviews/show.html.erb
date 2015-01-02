@@ -8,6 +8,7 @@
 <p><%= @review.body %></p>
 <% if current_user == @review.user %>
   <p><%= link_to("Edit Review", edit_review_path(@review)) %></p>
+  <p><%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true) %></p>
 <% end %>
 <p><%= @review.updated_at %></p>
 <p><%= @review.created_at %></p>

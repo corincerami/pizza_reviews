@@ -42,6 +42,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = current_user.reviews.find(params[:id])
+    if @review.destroy
+      flash[:notice] = "Review deleted"
+      redirect_to pizzeria_path(@review.pizzeria)
+    else
+      render :show
+    end
+  end
+
   private
 
   def review_params

@@ -1,0 +1,28 @@
+<% if @review.errors.any? %>
+  <div class="row">
+    <div class="small-12 medium-4 columns alert-box alert">
+     <% @review.errors.full_messages.each do |msg| %>
+       <div>
+         <%= msg %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="small-12 medium-6 columns">
+    <%= form_for [@review] do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :body %>
+      <%= f.text_field :body %>
+
+      <%= f.label :rating %>
+      <%= f.select(:rating, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5]], include_blank: true) %>
+
+      <%= f.submit class: "button alert round" %>
+    <% end %>
+  </div>
+</div>

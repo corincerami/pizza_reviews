@@ -1,12 +1,34 @@
-<h2><%= @pizzeria.name %></h2>
-<h3><%= @pizzeria.street %><br/>
-    <%= @pizzeria.address %></h3>
-<%= link_to("Edit Pizzeria", edit_pizzeria_path(@pizzeria)) %>
-<%= link_to("Delete Pizzeria", pizzeria_path(@pizzeria), method: :delete, confirm: true) %>
-<%= link_to("Create Review", new_pizzeria_review_path(@pizzeria)) %>
-<h3>Reviews:</h3>
-<% @pizzeria.reviews.each do |review| %>
-  <div>
-  	<%= link_to(review.title, review_path(review)) %>
+<div class="row">
+  <div class="small-12 medium-6 columns">
+    <h2><%= @pizzeria.name %></h2>
+    <h3><%= @pizzeria.street %><br/>
+        <%= @pizzeria.address %></h3>
   </div>
-<% end %>
+</div>
+
+<div class="row">
+  <div class="small-6 medium-12 columns">
+    <%= link_to("Edit Pizzeria", edit_pizzeria_path(@pizzeria), class: "button alert round") %>
+    <%= link_to("Delete Pizzeria", pizzeria_path(@pizzeria), method: :delete, confirm: true, class: "button alert round") %>
+    <%= link_to("Create Review", new_pizzeria_review_path(@pizzeria), class: "button alert round") %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Reviews:</h3>
+
+  <ul class="small-block-grid-3">
+    <% @pizzeria.reviews.each do |review| %>
+      <li>
+        <ul class="vcard">
+          <li>
+          	<%= link_to(review.title, review_path(review)) %>
+          </li>
+          <li>
+            <%= "#{review.rating} stars" %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

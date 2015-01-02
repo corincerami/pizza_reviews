@@ -1,13 +1,32 @@
-<%= link_to("Add a Pizzeria", new_pizzeria_path) %>
+<div class="row">
+  <div class="small-6 medium-4 columns">
+    <%= link_to("Add a Pizzeria", new_pizzeria_path, class: "button alert round") %>
+  </div>
+</div>
 
-<% @pizzerias.each do |pizzeria| %>
-  <div class='pizzeria'>
-    <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>
-    <% pizzeria.latest_reviews.each do |review| %>
+<div class="row">
+  <div class="small-6 columns">
+    <% @pizzerias.each do |pizzeria| %>
       <div>
-        <%= link_to(review.title, review_path(review)) %><br>
-        <%= "#{review.rating} stars" %>
+        <ul class='pizzeria vcard'>
+          <li>
+            <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>
+          </li>
+          <li>
+            Latest Reviews:
+          </li>
+          <li>
+            <% pizzeria.latest_reviews.each do |review| %>
+          </li>
+          <li>
+            <%= link_to(review.title, review_path(review)) %>
+          </li>
+          <li>
+            <%= "#{review.rating} stars" %>
+          </li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
   </div>
-<% end %>
+</div>

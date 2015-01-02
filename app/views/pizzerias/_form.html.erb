@@ -1,32 +1,40 @@
-<% if @pizzeria.errors.any? %>
-  <% @pizzeria.errors.full_messages.each do |msg| %>
-    <div>
-      <%= msg %>
-    </div>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="small-12 medium-4 columns alert-box alert">
+    <% if @pizzeria.errors.any? %>
+      <% @pizzeria.errors.full_messages.each do |msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<%= form_for @pizzeria do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="row">
+<div class="small-12 medium-6 columns">
+    <%= form_for @pizzeria do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-  <%= f.label :street %>
-  <%= f.text_field :street %>
+      <%= f.label :street %>
+      <%= f.text_field :street %>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
 
-  <%= f.label :state %>
-  <%= f.text_field :state %>
+      <%= f.label :state %>
+      <%= f.text_field :state %>
 
-  <%= f.label :zip_code %>
-  <%= f.text_field :zip_code %>
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
 
-  <%= f.label :phone, "Phone number" %>
-  <%= f.text_field :phone %>
+      <%= f.label :phone, "Phone number" %>
+      <%= f.text_field :phone %>
 
-  <%= f.label :website %>
-  <%= f.text_field :website %>
+      <%= f.label :website %>
+      <%= f.text_field :website %>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.submit class: "button alert round" %>
+    <% end %>
+  </div>
+</div>

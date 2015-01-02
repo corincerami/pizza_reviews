@@ -1,3 +1,5 @@
+<%= link_to("Add a Pizzeria", new_pizzeria_path) %>
+
 <% @pizzerias.each do |pizzeria| %>
   <div class='pizzeria'>
     <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>

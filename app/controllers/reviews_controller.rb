@@ -28,9 +28,9 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
     @pizzeria = @review.pizzeria
-    if correct_user? && @review.update(review_params)
+    if @review.update(review_params)
       flash[:notice] = "Review Updated Sucessfully"
       redirect_to review_path(@review)
     else
@@ -54,7 +54,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :body, :rating)
   end
 
-  def correct_user?
-    current_user == @review.user
-  end
 end

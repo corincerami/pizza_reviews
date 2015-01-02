@@ -37,15 +37,12 @@ feature "User edits a review" do
     expect(page).to have_content "Rating can't be blank"
   end
 
-  # it "tries to edit a review that was not created by user" do
-  #   review = FactoryGirl.create(:review)
-  #   user1 = FactoryGirl.create(:user)
-  #   sign_in(user1)
-  #   visit review_path(review)
+  it "tries to edit a review that was not created by user" do
+    review = FactoryGirl.create(:review)
+    user1 = FactoryGirl.create(:user)
+    sign_in(user1)
+    visit review_path(review)
 
-  #   click_on "Edit Review"
-
-  #   # expect(page).to have_content "You do not have permission to edit this
-  #   #                               review"
-  # end
+    expect(page).not_to have_content "Edit Review"
+  end
 end

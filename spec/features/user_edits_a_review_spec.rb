@@ -6,7 +6,7 @@ feature "User edits a review" do
     pizzeria = review.pizzeria
     user = review.user
     sign_in(user)
-    visit pizzeria_review_path(pizzeria, review)
+    visit review_path(review)
 
     click_on "Edit Review"
 
@@ -25,7 +25,7 @@ feature "User edits a review" do
     pizzeria = review.pizzeria
     user = review.user
     sign_in(user)
-    visit pizzeria_review_path(pizzeria, review)
+    visit review_path(review)
 
     click_on "Edit Review"
 
@@ -45,7 +45,7 @@ feature "User edits a review" do
     user = review.user
     user1 = FactoryGirl.create(:user)
     sign_in(user1)
-    visit pizzeria_review_path(pizzeria, review)
+    visit review_path(review)
 
     click_on "Edit Review"
 

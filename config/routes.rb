@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :pizzerias do
-    resources :reviews
+    resources :reviews, only: [:new, :create]
   end
+
+  resources :reviews, only: [:show, :edit, :update]
 
   resources :users, only: :show
 

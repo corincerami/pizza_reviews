@@ -26,9 +26,7 @@ FactoryGirl.define do
       even when it's only 5pm!"
     end
     rating 4
-    after(:build) do |review|
-      review.pizzeria = FactoryGirl.create(:pizzeria)
-      review.user = FactoryGirl.create(:user)
-    end
+    user
+    pizzeria
   end
 end

@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
   end
 
   def new
@@ -17,7 +16,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       flash[:notice] = "Review created"
-      redirect_to pizzeria_review_path(@pizzeria, @review)
+      redirect_to review_path(@review)
     else
       render :new
     end
@@ -25,7 +24,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
+    @pizzeria = @review.pizzeria
     if !correct_user?
       flash[:error] = "You do not have permission to edit this review"
       render :show
@@ -34,10 +33,10 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
+    @pizzeria = @review.pizzeria
     if correct_user? && @review.update(review_params)
       flash[:notice] = "Review Updated Sucessfully"
-      redirect_to pizzeria_review_path(@pizzeria, @review)
+      redirect_to review_path(@review)
     else
       render :edit
     end

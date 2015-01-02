@@ -8,4 +8,8 @@ class Pizzeria < ActiveRecord::Base
   validates :zip_code, presence: true
 
   validates_uniqueness_of :street, scope: [:name, :city, :state]
+
+  def address
+    "#{city}, #{state} #{zip_code}"
+  end
 end

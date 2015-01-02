@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def show
     @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
     @comment = Comment.new
   end
 

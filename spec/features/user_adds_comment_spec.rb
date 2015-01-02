@@ -13,7 +13,7 @@ feature "post a comment", %{
   } do
 
     let(:user) { FactoryGirl.create(:user) }
-    let(:pizzeria) { FactoryGirl.create(:pizzeria)}
+    let(:pizzeria) { FactoryGirl.create(:pizzeria) }
     let(:review) { FactoryGirl.create(:review, pizzeria: pizzeria) }
 
     scenario "user posts a comment with valid attributes" do

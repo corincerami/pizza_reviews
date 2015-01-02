@@ -3,10 +3,9 @@ require "rails_helper"
 feature "User edits a review" do
   it "shows the new information on the page" do
     review = FactoryGirl.create(:review)
-    pizzeria = review.pizzeria
     user = review.user
     sign_in(user)
-    visit pizzeria_review_path(pizzeria, review)
+    visit review_path(review)
 
     click_on "Edit Review"
 
@@ -22,10 +21,9 @@ feature "User edits a review" do
 
   it "fills out invalid information" do
     review = FactoryGirl.create(:review)
-    pizzeria = review.pizzeria
     user = review.user
     sign_in(user)
-    visit pizzeria_review_path(pizzeria, review)
+    visit review_path(review)
 
     click_on "Edit Review"
 
@@ -41,15 +39,10 @@ feature "User edits a review" do
 
   it "tries to edit a review that was not created by user" do
     review = FactoryGirl.create(:review)
-    pizzeria = review.pizzeria
-    user = review.user
     user1 = FactoryGirl.create(:user)
     sign_in(user1)
-    visit pizzeria_review_path(pizzeria, review)
+    visit review_path(review)
 
-    click_on "Edit Review"
-
-    expect(page).to have_content "You do not have permission to edit this
-                                  review"
+    expect(page).not_to have_content "Edit Review"
   end
 end

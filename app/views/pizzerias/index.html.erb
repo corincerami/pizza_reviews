@@ -3,5 +3,11 @@
 <% @pizzerias.each do |pizzeria| %>
   <div class='pizzeria'>
     <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>
+    <% pizzeria.latest_reviews.each do |review| %>
+      <div>
+        <%= link_to(review.title, review_path(review)) %><br>
+        <%= "#{review.rating} stars" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

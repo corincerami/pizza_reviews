@@ -6,27 +6,26 @@ require "rails_helper"
 
 # Acceptence Criteria
 # - User sees the name of the pizzeria and address
-# - User can click on a pizzeria review on the pizzeria show page and see pizza slice reviews at that pizzeria.
+# - User can click on a pizzeria review on the pizzeria show page and see pizza
+# 	slice reviews at that pizzeria.
 # - User can see all slice ratings from this view
 # - User can see who created the review
 
-
 feature "User views a review" do
-	it "sees the review data on a page" do
-		review = FactoryGirl.create(:review)
-		pizzeria = review.pizzeria
-		visit pizzerias_path
-		click_on pizzeria.name
-	
-		click_on review.title
+  it "sees the review data on a page" do
+    review = FactoryGirl.create(:review)
+    pizzeria = review.pizzeria
+    visit pizzerias_path
+    click_on pizzeria.name
 
-		expect(page).to have_content review.body
-		expect(page).to have_content pizzeria.name
-		expect(page).to have_content pizzeria.street
-		expect(page).to have_content review.rating
-		expect(page).to have_content review.created_at
-		expect(page).to have_content review.updated_at
-		expect(page).to have_content review.user.email
-	end
+    click_on review.title
+
+    expect(page).to have_content review.body
+    expect(page).to have_content pizzeria.name
+    expect(page).to have_content pizzeria.street
+    expect(page).to have_content review.rating
+    expect(page).to have_content review.created_at
+    expect(page).to have_content review.updated_at
+    expect(page).to have_content review.user.email
+  end
 end
-

@@ -45,6 +45,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry'
   gem 'valid_attribute'
+  gem 'orderly'
 end
 
 group :test do

@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
   end
 
   def new
@@ -17,29 +16,35 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       flash[:notice] = "Review created"
-      redirect_to pizzeria_review_path(@pizzeria, @review)
+      redirect_to review_path(@review)
     else
       render :new
     end
   end
 
   def edit
-    @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
-    if !correct_user?
-      flash[:error] = "You do not have permission to edit this review"
-      render :show
-    end
+    @review = current_user.reviews.find(params[:id])
+    @pizzeria = @review.pizzeria
   end
 
   def update
-    @review = Review.find(params[:id])
-    @pizzeria = Pizzeria.find(@review.pizzeria_id)
-    if correct_user? && @review.update(review_params)
+    @review = current_user.reviews.find(params[:id])
+    @pizzeria = @review.pizzeria
+    if @review.update(review_params)
       flash[:notice] = "Review Updated Sucessfully"
-      redirect_to pizzeria_review_path(@pizzeria, @review)
+      redirect_to review_path(@review)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @review = current_user.reviews.find(params[:id])
+    if @review.destroy
+      flash[:notice] = "Review deleted"
+      redirect_to pizzeria_path(@review.pizzeria)
+    else
+      render :show
     end
   end
 
@@ -47,9 +52,5 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :body, :rating)
-  end
-
-  def correct_user?
-    current_user == @review.user
   end
 end

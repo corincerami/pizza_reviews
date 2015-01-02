@@ -11,6 +11,7 @@ require "rails_helper"
 feature "User views a pizzeria's details" do
   it "sees the details on the page" do
     pizzeria = FactoryGirl.create(:pizzeria)
+    reviews = FactoryGirl.create_list(:review, 3, pizzeria: pizzeria)
 
     visit pizzeria_path(pizzeria)
 
@@ -19,5 +20,8 @@ feature "User views a pizzeria's details" do
     expect(page).to have_content pizzeria.city
     expect(page).to have_content pizzeria.state
     expect(page).to have_content pizzeria.zip_code
+    reviews.each do |review|
+      expect(page).to have_content review.title
+    end
   end
 end

@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to review_path(@review),
         notice: "Comment has been posted sucessfully"
+    else
+      render 'reviews/show'
     end
   end
 

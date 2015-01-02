@@ -26,4 +26,14 @@ feature "post a comment", %{
 
       expect(page).to have_content "Comment has been posted sucessfully"
     end
+
+    scenario "user receives error messages for invalid input" do
+      sign_in(user)
+
+      visit review_path(review)
+
+      click_button "Submit Comment"
+
+      expect(page).to have_content "can't be blank"
+    end
   end

@@ -12,4 +12,8 @@ class Pizzeria < ActiveRecord::Base
   def address
     "#{city}, #{state} #{zip_code}"
   end
+
+  def latest_reviews
+    reviews.order(created_at: :desc).limit(3)
+  end
 end

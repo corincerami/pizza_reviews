@@ -14,7 +14,6 @@ feature "User views a pizzeria's details" do
     reviews = FactoryGirl.create_list(:review, 3, pizzeria: pizzeria)
 
     visit pizzeria_path(pizzeria)
-    save_and_open_page
 
     expect(page).to have_content pizzeria.name
     expect(page).to have_content pizzeria.street

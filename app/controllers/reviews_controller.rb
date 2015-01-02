@@ -25,10 +25,6 @@ class ReviewsController < ApplicationController
   def edit
     @review = current_user.reviews.find(params[:id])
     @pizzeria = @review.pizzeria
-    if !correct_user?
-      flash[:error] = "You do not have permission to edit this review"
-      render :show
-    end
   end
 
   def update

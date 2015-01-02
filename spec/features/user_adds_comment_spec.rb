@@ -17,10 +17,8 @@ feature "post a comment", %{
     let(:review) { FactoryGirl.create(:review, pizzeria: pizzeria) }
 
     scenario "user posts a comment with valid attributes" do
+      sign_in(user)
       visit review_path(review)
-      # sign_in user
-      save_and_open_page
-
 
       fill_in "Title", with: review.title
       fill_in "Comment", with: review.body

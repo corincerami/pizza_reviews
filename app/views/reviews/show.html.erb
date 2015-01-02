@@ -2,7 +2,7 @@
 
 <h2><%= @pizzeria.name %></h2>
 <h3><%= @pizzeria.street %><br/>
-  	<%= "#{@pizzeria.city}, #{@pizzeria.state} #{@pizzeria.zip_code}" %></h3>
+    <%= "#{@pizzeria.city}, #{@pizzeria.state} #{@pizzeria.zip_code}" %></h3>
 
 <p><%= @review.rating %></p>
 <p><%= @review.body %></p>
@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <%= f.label :comment %>
-    <%= f.text_area :comment %>
+    <%= f.label :body, "Comment" %>
+    <%= f.text_area :body %>
   </div>
 
   <div>

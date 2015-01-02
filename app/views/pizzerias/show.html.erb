@@ -4,5 +4,5 @@
 <%= link_to("Edit Pizzeria", edit_pizzeria_path(@pizzeria)) %>
 <%= link_to("Delete Pizzeria", pizzeria_path(@pizzeria), method: :delete, confirm: true) %>
 <% @pizzeria.reviews.each do |review| %>
-	<%= link_to(review.title, pizzeria_review_path(@pizzeria, review)) %>
+  <%= link_to(review.title, review_path(review)) %>
 <% end %>

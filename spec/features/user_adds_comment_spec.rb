@@ -12,7 +12,7 @@ feature "post a comment", %{
   * My comment should appear on the review page
   } do
 
-    let(:comment) { FactoryGirl.create(:comment) }
+    let(:comment) { FactoryGirl.build(:comment) }
 
     scenario "user posts a comment with valid attributes" do
       sign_in(comment.user)
@@ -23,6 +23,8 @@ feature "post a comment", %{
       click_button "Submit Comment"
 
       expect(page).to have_content "Comment has been posted sucessfully"
+      expect(page).to have_content comment.title
+      expect(page).to have_content comment.body
     end
 
     scenario "user receives error messages for invalid input" do

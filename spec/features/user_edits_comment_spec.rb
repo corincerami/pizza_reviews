@@ -44,4 +44,13 @@ feature "user edits comment", %{
 
     expect(page).to have_content "can't be blank"
   end
+
+  scenario "invalid user can't edit comment" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
+
+    visit review_path(comment.review)
+
+    expect(page).not_to have_content "Edit comment"
+  end
 end

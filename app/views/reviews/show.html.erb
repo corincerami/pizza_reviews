@@ -45,7 +45,9 @@
         <div>
           <%= comment.title %><br/>
           <%= comment.body %>
-          <%= link_to "Edit comment", edit_comment_path(comment) %>
+          <% if current_user == comment.user %>
+            <%= link_to "Edit comment", edit_comment_path(comment) %>
+          <% end %>
         </div>
       <% end %>
     </div>

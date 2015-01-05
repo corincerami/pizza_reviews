@@ -14,11 +14,11 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     if @comment.update(comment_params)
       redirect_to review_path(@comment.review),
                   notice: "Comment has been updated"

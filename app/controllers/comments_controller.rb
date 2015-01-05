@@ -27,6 +27,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to review_path(@comment.review),
+                  notice: "Comment has been deleted"
+    else
+      render "reviews/show"
+    end
+  end
+
   protected
 
   def comment_params

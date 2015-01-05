@@ -20,4 +20,13 @@ feature "delete a comment", %{
 
     expect(page).to have_content "Comment has been deleted"
   end
+
+  scenario "user can't delete another user's comment" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
+
+    visit review_path(comment.review)
+
+    expect(page).not_to have_content "Delete comment"
+  end
 end

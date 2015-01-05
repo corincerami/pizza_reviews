@@ -29,4 +29,19 @@ feature "user edits comment", %{
     expect(page).to have_content "New Title"
     expect(page).to have_content "New Body"
   end
+
+  scenario "user doesn't provide valid information" do
+    sign_in(comment.user)
+
+    visit review_path(comment.review)
+
+    click_on "Edit comment"
+
+    fill_in "Title", with: ""
+    fill_in "Comment", with: ""
+
+    click_button "Update Comment"
+
+    expect(page).to have_content "can't be blank"
+  end
 end

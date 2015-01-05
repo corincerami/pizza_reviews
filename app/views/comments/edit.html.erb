@@ -1,3 +1,15 @@
+<% if @comment.errors.any? %>
+  <div class="row">
+    <div class="small-12 medium-4 columns alert-box alert">
+     <% @comment.errors.full_messages.each do |msg| %>
+       <div>
+         <%= msg %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <%= form_for @comment do |f| %>
   <div>
     <%= f.label :title %>

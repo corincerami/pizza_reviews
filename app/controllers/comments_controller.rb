@@ -22,6 +22,8 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
      redirect_to review_path(@comment.review),
                  notice: "Comment has been updated"
+    else
+      render :edit
     end
   end
 

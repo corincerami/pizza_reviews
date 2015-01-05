@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def name
     "#{first_name} #{last_initial}."
   end
+
+  def has_upvoted?(review)
+    !self.upvotes.find_by(review: review).nil?
+  end
 end

@@ -39,4 +39,13 @@ feature "User votes on a review", %{
       expect(page).to have_content "Review's score: -1"
     end
 
+    scenario "upvote button doesn't appear if user has upvoted" do
+      sign_in(user)
+
+      visit review_path(review)
+
+      click_on "Upvote Review"
+      
+      expect(page).not_to have_content "Upvote Review"
+    end
 end

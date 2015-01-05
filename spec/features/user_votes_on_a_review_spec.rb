@@ -45,7 +45,17 @@ feature "User votes on a review", %{
       visit review_path(review)
 
       click_on "Upvote Review"
-      
+
       expect(page).not_to have_content "Upvote Review"
+    end
+
+    scenario "downvote button doesn't appear if user has downvoted" do
+      sign_in(user)
+
+      visit review_path(review)
+
+      click_on "Downvote Review"
+      
+      expect(page).not_to have_content "Downvote Review"
     end
 end

@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
   def has_upvoted?(review)
     !self.upvotes.find_by(review: review).nil?
   end
+
+  def has_downvoted?(review)
+    !self.downvotes.find_by(review: review).nil?
+  end
 end

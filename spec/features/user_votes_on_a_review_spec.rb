@@ -58,4 +58,16 @@ feature "User votes on a review", %{
       
       expect(page).not_to have_content "Downvote Review"
     end
+
+    scenario "switching votes removes the old vote and updates score" do
+      sign_in(user)
+
+      visit review_path(review)
+
+      click_on "Upvote Review"
+      click_on "Downvote Review"
+
+      expect(page).to have_content "1 vote(s) on this review"
+      expect(page).to have_content "Review's score: -1"
+    end
 end

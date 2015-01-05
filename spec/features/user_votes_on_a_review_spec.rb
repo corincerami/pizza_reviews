@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "User upvotes review", %{
+feature "User votes on a review", %{
   As a user
   I want to upvote or downvote a review
   So that I can express if I liked the review or not
@@ -25,6 +25,18 @@ feature "User upvotes review", %{
       expect(page).to have_content "Vote recorded"
       expect(page).to have_content "1 vote(s) on this review"
       expect(page).to have_content "Review's score: 1"
+    end
+
+    scenario "user downvotes a review" do
+      sign_in(user)
+
+      visit review_path(review)
+
+      click_on "Downvote Review"
+
+      expect(page).to have_content "Vote recorded"
+      expect(page).to have_content "1 vote(s) on this review"
+      expect(page).to have_content "Review's score: -1"
     end
 
 end

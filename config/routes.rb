@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:show, :edit, :update, :destroy] do
     resources :comments, only: :create
     resources :upvotes, only: :create
+    resources :downvotes, only: :create
   end
   resources :users, only: :show
 end

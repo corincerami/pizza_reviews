@@ -18,12 +18,14 @@
 <p><%= @review.body %></p>
 <p><%= "#{@review.vote_count} vote(s) on this review" %></p>
 <p><%= "Review's score: #{@review.score}" %></p>
-<% if current_user && !current_user.has_upvoted?(@review) %>
-  <%= link_to("Upvote Review", review_upvotes_path(@review, @upvote), method: :post) %>
-<% end %>
-<% if current_user && !current_user.has_downvoted?(@review) %>
-  <%= link_to("Downvote Review", review_downvotes_path(@review, @downvote), method: :post) %>
-<% end %>
+<div>
+  <% if current_user && !current_user.has_upvoted?(@review) %>
+    <%= link_to("Upvote Review", review_upvotes_path(@review, @upvote), method: :post, class: "button alert round") %>
+  <% end %>
+  <% if current_user && !current_user.has_downvoted?(@review) %>
+    <%= link_to("Downvote Review", review_downvotes_path(@review, @downvote), method: :post, class: "button alert round") %>
+  <% end %>
+</div>
 <% if current_user == @review.user %>
   <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
   <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>

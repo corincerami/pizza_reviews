@@ -34,6 +34,7 @@ feature "user profile", %{
 
     visit user_path(user)
 
+    expect(page).to have_content "Liz V."
     expect(page).to have_selector("img[alt=\"#{user.username}\"]")
   end
 end

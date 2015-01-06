@@ -16,6 +16,13 @@
 
 <p><%= "#{@review.rating} stars" %></p>
 <p><%= @review.body %></p>
+<p><%= "#{@review.total_votes} vote(s) on this review" %></p>
+
+<%= form_for [@review, @vote] do |f| %>
+  <%= f.hidden_field :value, value: 1 %>
+  <%= f.submit "Upvote Review" %>
+<% end %>
+<p><%= "Review's score: #{@review.score}" %></p>
 
 <% if current_user == @review.user %>
   <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>

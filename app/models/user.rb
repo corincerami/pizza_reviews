@@ -17,4 +17,16 @@ class User < ActiveRecord::Base
   def name
     "#{first_name} #{last_initial}."
   end
+
+  def has_voted?(review)
+    votes.find_by(review: review)
+  end
+
+  def has_upvoted?(review)
+    has_voted?(review) && votes.find_by(review: review).value == 1
+  end
+
+  def has_downvoted?(review)
+    has_voted?(review) && votes.find_by(review: review).value == -1
+  end
 end

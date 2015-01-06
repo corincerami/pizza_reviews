@@ -45,8 +45,8 @@ feature "User votes on a review", %{
       visit review_path(review)
 
       click_on "Upvote Review"
-
-      expect(page).not_to have_content "Upvote Review"
+      save_and_open_page
+      expect(page).not_to have_button "Upvote Review"
     end
 
     scenario "downvote button doesn't appear if user has downvoted" do
@@ -56,7 +56,7 @@ feature "User votes on a review", %{
 
       click_on "Downvote Review"
       
-      expect(page).not_to have_content "Downvote Review"
+      expect(page).not_to have_button "Downvote Review"
     end
 
     scenario "switching votes removes the old vote and updates score" do

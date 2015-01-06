@@ -18,14 +18,18 @@
 <p><%= @review.body %></p>
 <p><%= "#{@review.total_votes} vote(s) on this review" %></p>
 
-<%= form_for [@review, @vote] do |f| %>
-  <%= f.hidden_field :value, value: 1 %>
-  <%= f.submit "Upvote Review" %>
+<% if signed_in? && !current_user.has_upvoted?(@review) %>
+  <%= form_for [@review, @vote] do |f| %>
+    <%= f.hidden_field :value, value: 1 %>
+    <%= f.submit "Upvote Review", class: "button alert round" %>
+  <% end %>
 <% end %>
 <p><%= "Review's score: #{@review.score}" %></p>
-<%= form_for [@review, @vote] do |f| %>
-  <%= f.hidden_field :value, value: -1 %>
-  <%= f.submit "Downvote Review" %>
+<% if signed_in? && !current_user.has_downvoted?(@review) %>
+  <%= form_for [@review, @vote] do |f| %>
+    <%= f.hidden_field :value, value: -1 %>
+    <%= f.submit "Downvote Review", class: "button alert round" %>
+  <% end %>
 <% end %>
 
 <% if current_user == @review.user %>

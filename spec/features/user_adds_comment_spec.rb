@@ -12,25 +12,25 @@ feature "post a comment", %{
   * My comment should appear on the review page
   } do
 
-    let(:user) { FactoryGirl.create(:user) }
-    let(:pizzeria) { FactoryGirl.create(:pizzeria) }
-    let(:review) { FactoryGirl.create(:review, pizzeria: pizzeria) }
+    let(:comment) { FactoryGirl.build(:comment) }
 
     scenario "user posts a comment with valid attributes" do
-      sign_in(user)
-      visit review_path(review)
+      sign_in(comment.user)
+      visit review_path(comment.review)
 
-      fill_in "Title", with: review.title
-      fill_in "Comment", with: review.body
+      fill_in "Title", with: comment.title
+      fill_in "Comment", with: comment.body
       click_button "Submit Comment"
 
       expect(page).to have_content "Comment has been posted sucessfully"
+      expect(page).to have_content comment.title
+      expect(page).to have_content comment.body
     end
 
     scenario "user receives error messages for invalid input" do
-      sign_in(user)
+      sign_in(comment.user)
 
-      visit review_path(review)
+      visit review_path(comment.review)
 
       click_button "Submit Comment"
 

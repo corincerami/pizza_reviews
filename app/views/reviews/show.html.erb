@@ -1,59 +1,70 @@
 <h1><%= @review.title %></h1>
 <% if @comment.errors.any? %>
   <% @comment.errors.full_messages.each do |msg| %>
-  <div>
-    <%= msg %>
-  </div>
+    <div>
+      <%= msg %>
+    </div>
   <% end %>
 <% end %>
 
 <div class="row">
-<div class="small-12 medium-6 columns">
+  <div class="small-12 medium-6 columns">
+    <h2><%= link_to(@review.pizzeria.name, pizzeria_path(@review.pizzeria)) %></h2>
+    <h3><%= @review.pizzeria.street %><br/>
+        <%= @review.pizzeria.address %></h3>
+    <p><%= "#{@review.rating} stars" %></p>
+    <p><%= @review.body %></p>
+    <p><%= "#{@review.total_votes} vote(s) on this review" %></p>
 
-<h2><%= link_to(@review.pizzeria.name, pizzeria_path(@review.pizzeria)) %></h2>
-<h3><%= @review.pizzeria.street %><br/>
-    <%= @review.pizzeria.address %></h3>
+    <% if signed_in? && !current_user.has_upvoted?(@review) %>
+      <%= form_for [@review, @vote] do |f| %>
+        <%= f.hidden_field :value, value: 1 %>
+        <%= f.submit "Upvote Review", class: "button alert round" %>
+      <% end %>
+    <% end %>
+    <p><%= "Review's score: #{@review.score}" %></p>
+    <% if signed_in? && !current_user.has_downvoted?(@review) %>
+      <%= form_for [@review, @vote] do |f| %>
+        <%= f.hidden_field :value, value: -1 %>
+        <%= f.submit "Downvote Review", class: "button alert round" %>
+      <% end %>
+    <% end %>
 
-<p><%= "#{@review.rating} stars" %></p>
-<p><%= @review.body %></p>
-<p><%= "#{@review.total_votes} vote(s) on this review" %></p>
+    <% if current_user == @review.user %>
+      <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
+      <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
+    <% end %>
+    <p><%= @review.updated_at %></p>
+    <p><%= @review.created_at %></p>
+    <p><%= @review.user.email %></p>
 
-<% if signed_in? && !current_user.has_upvoted?(@review) %>
-  <%= form_for [@review, @vote] do |f| %>
-    <%= f.hidden_field :value, value: 1 %>
-    <%= f.submit "Upvote Review", class: "button alert round" %>
-  <% end %>
-<% end %>
-<p><%= "Review's score: #{@review.score}" %></p>
-<% if signed_in? && !current_user.has_downvoted?(@review) %>
-  <%= form_for [@review, @vote] do |f| %>
-    <%= f.hidden_field :value, value: -1 %>
-    <%= f.submit "Downvote Review", class: "button alert round" %>
-  <% end %>
-<% end %>
+    <%= form_for [@review, @comment] do |f| %>
+      <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
 
-<% if current_user == @review.user %>
-  <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
-  <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
-<% end %>
-  <p><%= @review.updated_at %></p>
-  <p><%= @review.created_at %></p>
-  <p><%= @review.user.email %></p>
+      <div>
+        <%= f.label :body, "Comment" %>
+        <%= f.text_area :body %>
+      </div>
 
-<%= form_for [@review, @comment] do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+      <div>
+        <%= f.submit "Submit Comment" %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= f.label :body, "Comment" %>
-    <%= f.text_area :body %>
-  </div>
-
-  <div>
-    <%= f.submit "Submit Comment" %>
-  </div>
-<% end %>
+    <div>
+      <% @review.comments.each do |comment| %>
+        <div>
+          <%= comment.title %><br/>
+          <%= comment.body %>
+          <% if current_user == comment.user %>
+            <%= link_to "Edit comment", edit_comment_path(comment) %>
+            <%= link_to "Delete comment", comment_path(comment), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

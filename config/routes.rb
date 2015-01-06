@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :votes, only: :create
   end
   resources :users, only: :show
+
+  resources :comments, only: [:edit, :update, :destroy]
 end

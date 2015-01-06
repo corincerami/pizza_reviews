@@ -1,5 +1,8 @@
 <div><%= @user.username %> (<%= @user.name %>)</div>
 <div>
+  <%= image_tag(@user.avatar.url, alt: @user.username) %>
+</div>
+<div>
   <%= @user.bio %>
 </div>
 <div>

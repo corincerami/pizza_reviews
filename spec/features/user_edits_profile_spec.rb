@@ -27,8 +27,14 @@ feature "user profile", %{
     fill_in "Email", with: user.email
     fill_in "Current password", with: user.password
     fill_in "Bio", with: "This is my awesome BIO!!!!!!"
+    attach_file("Avatar", "spec/images/avatar.png")
     click_button "Update"
 
     expect(page).to have_content("Your account has been updated successfully")
+
+    visit user_path(user)
+
+    expect(page).to have_content "Liz V."
+    expect(page).to have_selector("img[alt=\"#{user.username}\"]")
   end
 end

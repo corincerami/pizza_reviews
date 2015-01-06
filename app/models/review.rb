@@ -1,5 +1,7 @@
 class Review < ActiveRecord::Base
   has_many :comments
+  has_many :votes
+
   belongs_to :user
   belongs_to :pizzeria
 
@@ -10,4 +12,12 @@ class Review < ActiveRecord::Base
                                      less_than_or_equal_to: 5 }
   validates :user, presence: true
   validates :pizzeria, presence: true
+
+  def total_votes
+    votes.count
+  end
+
+  def score
+    votes.sum(:value)
+  end
 end

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 1000 }
   validates :last_initial, format: { with: /\A[a-zA-Z]+\z/,
                                      message: "only allows letters" }
+  mount_uploader :avatar, AvatarUploader
 
   def name
     "#{first_name} #{last_initial}."

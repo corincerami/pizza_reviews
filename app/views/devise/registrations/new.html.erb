@@ -38,6 +38,11 @@
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
+      <div class="field">
+        <%= f.label :avatar %><br />
+        <%= f.file_field :avatar, multiple: true %>
+      </div>
+
       <div class="actions">
         <%= f.submit "Sign up", class: "button alert round" %>
       </div>

@@ -45,7 +45,7 @@ feature "User votes on a review", %{
     visit review_path(review)
 
     click_on "Upvote Review"
-    save_and_open_page
+
     expect(page).not_to have_button "Upvote Review"
   end
 

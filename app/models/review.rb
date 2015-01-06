@@ -18,10 +18,6 @@ class Review < ActiveRecord::Base
   end
 
   def score
-    score = 0
-    votes.each do |vote|
-      score += vote.value
-    end
-    score
+    votes.sum(:value)
   end
 end

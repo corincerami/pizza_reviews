@@ -11,4 +11,8 @@ class Comment < ActiveRecord::Base
   def pizzeria
     review.pizzeria
   end
+
+  def time_edited
+    updated_at.strftime("%B %d, %Y - %H:%M")
+  end
 end

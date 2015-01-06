@@ -24,8 +24,8 @@ feature "User views a review" do
     expect(page).to have_content pizzeria.name
     expect(page).to have_content pizzeria.street
     expect(page).to have_content review.rating
-    expect(page).to have_content review.created_at
-    expect(page).to have_content review.updated_at
-    expect(page).to have_content review.user.email
+    expect(page).to have_content review.time_created
+    expect(page).to have_content review.time_edited
+    expect(page).to have_content review.user_first_last
   end
 end

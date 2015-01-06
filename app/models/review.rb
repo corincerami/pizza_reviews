@@ -10,4 +10,16 @@ class Review < ActiveRecord::Base
                                      less_than_or_equal_to: 5 }
   validates :user, presence: true
   validates :pizzeria, presence: true
+
+  def time_created
+    created_at.strftime("%B %d, %Y - %H:%M")
+  end
+
+  def time_edited
+    updated_at.strftime("%B %d, %Y - %H:%M")
+  end
+
+  def user_first_last
+    "#{user.first_name} #{user.last_initial}."
+  end
 end

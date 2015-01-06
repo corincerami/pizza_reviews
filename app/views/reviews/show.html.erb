@@ -20,9 +20,9 @@
       <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
       <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
     <% end %>
-    <p><%= "Posted: #{@review.time_created}" %></p>
-    <p><%= "Last updated: #{@review.time_edited}" %></p>
-    <p><%= "Reviewed by: #{@review.user_first_last}" %></p>
+    <p><%= "Posted: #{format_datetime(@review.created_at)}" %></p>
+    <p><%= "Last updated: #{format_datetime(@review.updated_at)}" %></p>
+    <p><%= "Reviewed by: #{@review.user_full_name}" %></p>
 
     <%= form_for [@review, @comment] do |f| %>
       <div>
@@ -45,7 +45,7 @@
         <div>
           <%= comment.title %><br/>
           <%= comment.body %><br/>
-          <%= "Comment last updated at #{comment.time_edited}" %>
+          <%= "Comment last updated at #{format_datetime(comment.updated_at)}" %>
           <% if current_user == comment.user %>
             <%= link_to "Edit comment", edit_comment_path(comment) %>
           <% end %>

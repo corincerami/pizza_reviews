@@ -5,6 +5,6 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV["PRODUCTION_AWS_SECRET_KEY"] || ""
   }
   config.fog_directory  = ENV["PRODUCTION_AWS_BUCKET"] || ""
-  config.fog_public     = false                                        # optional, defaults to true
-  config.fog_attributes = {'Cache-Control'=>"max-age=#{365.day.to_i}"} # optional, defaults to {}
+  config.fog_public     = true
+  config.fog_attributes = {'Cache-Control'=>"max-age=#{365.day.to_i}"}
 end

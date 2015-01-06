@@ -1,7 +1,5 @@
 class Review < ActiveRecord::Base
   has_many :comments
-  has_many :upvotes
-  has_many :downvotes
 
   belongs_to :user
   belongs_to :pizzeria
@@ -13,12 +11,4 @@ class Review < ActiveRecord::Base
                                      less_than_or_equal_to: 5 }
   validates :user, presence: true
   validates :pizzeria, presence: true
-
-  def vote_count
-    self.upvotes.count + self.downvotes.count
-  end
-
-  def score
-    self.upvotes.count - self.downvotes.count
-  end
 end

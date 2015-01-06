@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   has_many :reviews
   has_many :comments
-  has_many :upvotes
-  has_many :downvotes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,13 +15,5 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_initial}."
-  end
-
-  def has_upvoted?(review)
-    !self.upvotes.find_by(review: review).nil?
-  end
-
-  def has_downvoted?(review)
-    !self.downvotes.find_by(review: review).nil?
   end
 end

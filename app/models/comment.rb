@@ -7,8 +7,4 @@ class Comment < ActiveRecord::Base
   validates :body, length: { maximum: 1000 }
   validates :user, presence: true
   validates :review, presence: true
-
-  def pizzeria
-    review.pizzeria
-  end
 end

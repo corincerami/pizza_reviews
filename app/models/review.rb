@@ -13,6 +13,10 @@ class Review < ActiveRecord::Base
   validates :user, presence: true
   validates :pizzeria, presence: true
 
+  def user_full_name
+    "#{user.first_name} #{user.last_initial}."
+  end
+
   def total_votes
     votes.count
   end

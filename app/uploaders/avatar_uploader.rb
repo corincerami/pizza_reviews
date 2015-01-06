@@ -1,14 +1,11 @@
 # encoding: utf-8
 
 class AvatarUploader < CarrierWave::Uploader::Base
-
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
-
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  if Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
 
   def default_url
     "http://biodegradablegeek.com/wp-content/uploads/2008/06/26.png"

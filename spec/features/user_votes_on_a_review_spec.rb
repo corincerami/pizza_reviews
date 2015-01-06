@@ -11,63 +11,63 @@ feature "User votes on a review", %{
   * If I vote the same way again, my vote is cancelled out
   } do
 
-    let(:user) { FactoryGirl.create(:user) }
-    let(:pizzeria) { FactoryGirl.create(:pizzeria) }
-    let(:review) { FactoryGirl.create(:review, pizzeria: pizzeria) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:pizzeria) { FactoryGirl.create(:pizzeria) }
+  let(:review) { FactoryGirl.create(:review, pizzeria: pizzeria) }
 
-    scenario "user upvotes a review" do
-      sign_in(user)
+  scenario "user upvotes a review" do
+    sign_in(user)
 
-      visit review_path(review)
+    visit review_path(review)
 
-      click_on "Upvote Review"
+    click_on "Upvote Review"
 
-      expect(page).to have_content "Vote recorded"
-      expect(page).to have_content "1 vote(s) on this review"
-      expect(page).to have_content "Review's score: 1"
-    end
+    expect(page).to have_content "Vote recorded"
+    expect(page).to have_content "1 vote(s) on this review"
+    expect(page).to have_content "Review's score: 1"
+  end
 
-    scenario "user downvotes a review" do
-      sign_in(user)
+  scenario "user downvotes a review" do
+    sign_in(user)
 
-      visit review_path(review)
+    visit review_path(review)
 
-      click_on "Downvote Review"
+    click_on "Downvote Review"
 
-      expect(page).to have_content "Vote recorded"
-      expect(page).to have_content "1 vote(s) on this review"
-      expect(page).to have_content "Review's score: -1"
-    end
+    expect(page).to have_content "Vote recorded"
+    expect(page).to have_content "1 vote(s) on this review"
+    expect(page).to have_content "Review's score: -1"
+  end
 
-    scenario "upvote button doesn't appear if user has upvoted" do
-      sign_in(user)
+  scenario "upvote button doesn't appear if user has upvoted" do
+    sign_in(user)
 
-      visit review_path(review)
+    visit review_path(review)
 
-      click_on "Upvote Review"
-      save_and_open_page
-      expect(page).not_to have_button "Upvote Review"
-    end
+    click_on "Upvote Review"
+    save_and_open_page
+    expect(page).not_to have_button "Upvote Review"
+  end
 
-    scenario "downvote button doesn't appear if user has downvoted" do
-      sign_in(user)
+  scenario "downvote button doesn't appear if user has downvoted" do
+    sign_in(user)
 
-      visit review_path(review)
+    visit review_path(review)
 
-      click_on "Downvote Review"
-      
-      expect(page).not_to have_button "Downvote Review"
-    end
+    click_on "Downvote Review"
 
-    scenario "switching votes removes the old vote and updates score" do
-      sign_in(user)
+    expect(page).not_to have_button "Downvote Review"
+  end
 
-      visit review_path(review)
+  scenario "switching votes removes the old vote and updates score" do
+    sign_in(user)
 
-      click_on "Upvote Review"
-      click_on "Downvote Review"
+    visit review_path(review)
 
-      expect(page).to have_content "1 vote(s) on this review"
-      expect(page).to have_content "Review's score: -1"
-    end
+    click_on "Upvote Review"
+    click_on "Downvote Review"
+
+    expect(page).to have_content "1 vote(s) on this review"
+    expect(page).to have_content "Review's score: -1"
+  end
 end

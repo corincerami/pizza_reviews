@@ -5,6 +5,6 @@ class CommentNotification < ApplicationMailer
     @comment = comment
 
     mail to: "#{@comment.review.user.email}",
-    subject: "#{@comment.user.username} has commented on your review"
+         subject: "#{@comment.user.username} has commented on your review"
   end
 end

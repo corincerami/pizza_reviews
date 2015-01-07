@@ -30,7 +30,8 @@ feature "post a comment", %{
       expect(ActionMailer::Base.deliveries.size).to eq(1)
 
       last_email = ActionMailer::Base.deliveries.last
-      expect(last_email).to have_subject("#{comment.user.username} has commented on your review")
+      expect(last_email).to have_subject(
+        "#{comment.user.username} has commented on your review")
       expect(last_email).to deliver_to(comment.review.user.email)
       expect(last_email).to have_body_text("#{comment.body}")
     end

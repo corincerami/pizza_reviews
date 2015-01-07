@@ -44,9 +44,18 @@
                 <% pizzeria.latest_reviews.each do |review| %>
                   <li>
                     <div class="row">
-                    <%= image_tag "http://lorempixel.com/g/100/100/", class: "th [radius]"%>
-                    <%= link_to(review.title, review_path(review)) %>
-                    <%= "#{"★" * review.rating}" %>
+                      <ul class='review vcard'>
+                        <li>
+                          <%= image_tag review.photo.thumb.url, class: "review-photo th [radius]" %>
+                        </li>
+                        <li>
+                          <%= link_to(review.title, review_path(review)) %>
+                        </li>
+                        <li>
+                          <%= "#{"★" * review.rating}" %>
+                        </li>
+                      </ul>
+                    </div>
                   </li>
                 <% end %>
             </ul>

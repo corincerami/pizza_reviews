@@ -3,6 +3,7 @@
     <h2><%= @pizzeria.name %></h2>
     <h3><%= @pizzeria.street %><br/>
         <%= @pizzeria.address %></h3>
+        <%= image_tag(@pizzeria.photo.url, alt: @pizzeria.name ) %>
   </div>
 </div>
 

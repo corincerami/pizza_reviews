@@ -17,4 +17,6 @@ class Pizzeria < ActiveRecord::Base
   def latest_reviews
     reviews.order(created_at: :desc).limit(3)
   end
+
+  mount_uploader :photo, PizzeriaPhotoUploader
 end

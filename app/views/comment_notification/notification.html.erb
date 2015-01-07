@@ -1,0 +1,4 @@
+Hey, <%= @comment.review.user.name %>! A comment has been posted on your review: <%= link_to @comment.review.title, review_path(@comment.review) %>.
+
+<p><%= @comment.title %></p>
+<p><%= @comment.body %></p>

@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.review = @review
     if @comment.save
+      CommentNotification.notification(@comment).deliver
       redirect_to review_path(@review),
                   notice: "Comment has been posted sucessfully"
     else

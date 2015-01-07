@@ -15,6 +15,8 @@ feature "post a comment", %{
     let(:comment) { FactoryGirl.build(:comment) }
 
     scenario "user posts a comment with valid attributes" do
+      ActionMailer::Base.deliveries = []
+
       sign_in(comment.user)
       visit review_path(comment.review)
 
@@ -25,6 +27,12 @@ feature "post a comment", %{
       expect(page).to have_content "Comment has been posted sucessfully"
       expect(page).to have_content comment.title
       expect(page).to have_content comment.body
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
+
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email).to have_subject("#{comment.user.username} has commented on your review")
+      expect(last_email).to deliver_to(comment.review.user.email)
+      expect(last_email).to have_body_text("#{comment.body}")
     end
 
     scenario "user receives error messages for invalid input" do

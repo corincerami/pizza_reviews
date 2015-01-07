@@ -27,6 +27,6 @@ feature "User views a review" do
     expect(page).to have_content review.rating
     expect(page).to have_content format_datetime(review.created_at)
     expect(page).to have_content format_datetime(review.updated_at)
-    expect(page).to have_content review.user_full_name
+    expect(page).to have_content review.user.name
   end
 end

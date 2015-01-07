@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @vote = Vote.new
     @comment.user = current_user
     @comment.review = @review
+
     if @comment.save
       redirect_to review_path(@review),
                   notice: "Comment has been posted sucessfully"
@@ -19,6 +20,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
+    @user = @comment.review.user
     if @comment.update(comment_params)
       redirect_to review_path(@comment.review),
                   notice: "Comment has been updated"

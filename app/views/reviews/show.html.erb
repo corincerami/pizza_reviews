@@ -35,8 +35,9 @@
       <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
     <% end %>
     <p><%= "Posted: #{format_datetime(@review.created_at)}" %></p>
+
     <p><%= "Last updated: #{format_datetime(@review.updated_at)}" %></p>
-    <p><%= "Reviewed by: #{@review.user_full_name}" %></p>
+    <p><%= "Reviewed by: #{@review.user.name}" %></p>
 
     <%= form_for [@review, @comment] do |f| %>
       <div>

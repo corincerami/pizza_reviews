@@ -1,0 +1,30 @@
+Searching 350 files for "user_full_name"
+
+/Users/kerron/Documents/pizza_reviews/pizza_reviews/app/helpers/application_helper.rb:
+    4    end
+    5
+    6:   def user_full_name(user)
+    7      "#{user.first_name} #{user.last_initial}."
+    8    end
+
+/Users/kerron/Documents/pizza_reviews/pizza_reviews/app/views/admin/users/index.html.erb:
+    1  <% @users.each do |user| %>
+    2:   <%= user_full_name(user) %>
+    3    <%= user.username %>
+    4    <%= user.email %>
+
+/Users/kerron/Documents/pizza_reviews/pizza_reviews/app/views/reviews/show.html.erb:
+   37      <p><%= "Posted: #{format_datetime(@review.created_at)}" %></p>
+   38      <p><%= "Last updated: #{format_datetime(@review.updated_at)}" %></p>  <% binding.pry %>
+   39:     <p><%= "Reviewed by: #{@review.user_full_name}" %></p>
+   40
+   41      <%= form_for [@review, @comment] do |f| %>
+
+/Users/kerron/Documents/pizza_reviews/pizza_reviews/spec/features/user_views_a_review_spec.rb:
+   28      expect(page).to have_content format_datetime(review.created_at)
+   29      expect(page).to have_content format_datetime(review.updated_at)
+   30:     expect(page).to have_content review.user_full_name
+   31    end
+   32  end
+
+4 matches across 4 files

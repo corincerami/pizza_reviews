@@ -7,7 +7,7 @@ feature "User creates a review" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)
-    click_on "Create Review"
+    click_on "Add a Review"
 
     fill_in "Title", with: "Pepperoni"
     fill_in "Body", with: "text text"
@@ -25,7 +25,7 @@ feature "User creates a review" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)
-    click_on "Create Review"
+    click_on "Add a Review"
     click_on "Create Review"
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Rating can't be blank"
@@ -35,7 +35,7 @@ feature "User creates a review" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)
-    click_on "Create Review"
+    click_on "Add a Review"
 
     expect(page).to have_content "You need to sign in or sign up"
   end

@@ -13,8 +13,21 @@ feature "admin views a list of users", %{
     admin = FactoryGirl.create(:user, admin: true)
     user = FactoryGirl.create(:user)
 
+    sign_in(admin)
+
     visit admin_users_path
 
     expect(page).to have_content user.username
+  end
+
+  scenario "unauthorized users are redirected" do
+    user = FactoryGirl.create(:user)
+
+    sign_in(user)
+
+    visit admin_users_path
+
+    expect(page).to have_content "not authorized"
+    expect(current_path).to eq(root_path)
   end
 end

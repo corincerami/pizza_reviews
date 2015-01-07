@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
   def has_downvoted?(review)
     has_voted?(review) && votes.find_by(review: review).value == -1
   end
+
+  def is_admin?
+    admin == true
+  end
 end

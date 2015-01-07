@@ -9,8 +9,11 @@
     <% @pizzerias.each do |pizzeria| %>
       <div>
         <ul class='pizzeria vcard'>
+          <li class="pizzeria-name">
+            <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %><br />
+          </li>
           <li>
-            <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>
+            <%= link_to image_tag(pizzeria.photo.thumb.url, alt: pizzeria.name), pizzeria_path(pizzeria) %>
           </li>
           <li>
             Latest Reviews:
@@ -30,38 +33,3 @@
     <% end %>
   </div>
 </div>
-
-<ul class="no-decoration" id="reviews">
-  <% @pizzerias.each do |pizzeria| %>
-    <li>
-      <div class="row">
-        <div class="small-4 columns">
-          <%= image_tag "http://lorempixel.com/g/200/200/", class: "th [radius] left"%>
-        </div>
-
-        <div class="small-8 columns">
-            <ul class="inline-list">
-                <% pizzeria.latest_reviews.each do |review| %>
-                  <li>
-                    <div class="row">
-                      <ul class='review vcard'>
-                        <li>
-                          <%= image_tag review.photo.thumb.url, class: "review-photo th [radius]" %>
-                        </li>
-                        <li>
-                          <%= link_to(review.title, review_path(review)) %>
-                        </li>
-                        <li>
-                          <%= "#{"★" * review.rating}" %>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>

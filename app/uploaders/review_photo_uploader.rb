@@ -8,7 +8,7 @@ class ReviewPhotoUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "http://i62.tinypic.com/2n8obq9.jpg"
+    "http://i57.tinypic.com/1z5lymw.jpg"
   end
 
   def store_dir

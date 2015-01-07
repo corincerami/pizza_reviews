@@ -24,7 +24,7 @@ feature "user registers", %{
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     fill_in "Password confirmation", with: user.password
-    attach_file("Avatar", "spec/images/avatar.png")
+    attach_file("Avatar", "spec/fixtures/images/avatar.png")
 
     click_button "Sign up"
 

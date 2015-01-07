@@ -30,3 +30,29 @@
     <% end %>
   </div>
 </div>
+
+<ul class="no-decoration" id="reviews">
+  <% @pizzerias.each do |pizzeria| %>
+    <li>
+      <div class="row">
+        <div class="small-4 columns">
+          <%= image_tag "http://lorempixel.com/g/200/200/", class: "th [radius] left"%>
+        </div>
+
+        <div class="small-8 columns">
+            <ul class="inline-list">
+                <% pizzeria.latest_reviews.each do |review| %>
+                  <li>
+                    <div class="row">
+                    <%= image_tag "http://lorempixel.com/g/100/100/", class: "th [radius]"%>
+                    <%= link_to(review.title, review_path(review)) %>
+                    <%= "#{"★" * review.rating}" %>
+                  </li>
+                <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

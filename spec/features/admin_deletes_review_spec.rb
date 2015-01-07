@@ -24,14 +24,14 @@ feature "admin can delete reviews", %{
     expect(reviews.count).to eq 10
   end
 
-  # scenario "unauthorized users are redirected" do
-  #   user = FactoryGirl.create(:user)
+  scenario "unauthorized users are redirected" do
+    user = FactoryGirl.create(:user)
 
-  #   sign_in(user)
+    sign_in(user)
 
-  #   visit admin_pizzerias_path
+    visit admin_reviews_path
 
-  #   expect(page).to have_content "not authorized"
-  #   expect(current_path).to eq(root_path)
-  # end
+    expect(page).to have_content "not authorized"
+    expect(current_path).to eq(root_path)
+  end
 end

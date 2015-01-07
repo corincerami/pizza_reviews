@@ -1,5 +1,8 @@
+<ul>
 <% @users.each do |user| %>
-  <%= user.name %>
+  <div class = "user"><li><%= user.name %>
   <%= user.username %>
   <%= user.email %>
+  <%= link_to("Delete user", user_path(user), method: :delete, confirm: true, class: "button alert round") %> %></li></div>
 <% end %>
+</ul>

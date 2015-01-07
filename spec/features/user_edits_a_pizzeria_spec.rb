@@ -24,6 +24,7 @@ feature "User edits a pizzeria" do
     fill_in "City", with: "New city"
     fill_in "State", with: "New state"
     fill_in "Zip code", with: "New zip"
+    attach_file("Photo", "spec/fixtures/images/pizzeria_photo.jpg")
     click_on "Update Pizzeria"
 
     expect(page).to have_content "Pizzeria updated"
@@ -32,6 +33,7 @@ feature "User edits a pizzeria" do
     expect(page).to have_content "New city"
     expect(page).to have_content "New state"
     expect(page).to have_content "New zip"
+    expect(page).to have_selector("img[alt=\"New pizzeria\"]")
   end
 
   it "fills out the form incorrectly" do

@@ -1,9 +1,6 @@
 <div class="row">
-  <div class="small-12 columns">
-    <h2><%= @pizzeria.name %></h2>
-  </div>
+  <h2><%= @pizzeria.name %></h2>
 </div>
-
 <div class="row">
   <div class="small-12 medium-9 columns">
     <address>
@@ -14,6 +11,10 @@
   <div class="small-12 medium-3 columns" style="align:bottom">
     <%= link_to("Add a Review", new_pizzeria_review_path(@pizzeria), class: "button success round") %>
   </div>
+</div>
+
+<div class="row">
+  <%= image_tag(@pizzeria.photo.url, alt: @pizzeria.name, class: "centered") %>
 </div>
 
 <div class="row">
@@ -34,8 +35,10 @@
         </div>
 
         <div class="small-11 columns">
-          <%= image_tag "http://lorempixel.com/g/150/150/", class: "th [radius] left"%>
-          <%= link_to(review.title, review_path(review)) %>
+          <%= link_to image_tag(review.photo.thumb.url, alt: review.title, class: "th [radius] left"), review_path(review) %>
+          <span class="review-title">
+            <%= link_to(review.title, review_path(review)) %>
+          </span>
           <%= "#{"★" * review.rating}#{"☆" * (5 - review.rating) }" %>
           <div><%= review.body %></div>
           <div class="username"><%= review.user.username %></div>

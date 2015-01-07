@@ -31,3 +31,8 @@
 #reviews .username {
   text-align: right;
 }
+
+.centered {
+  display: block;
+  margin: auto;
+}

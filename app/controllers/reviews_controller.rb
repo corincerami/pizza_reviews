@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+    @vote = Vote.new
   end
 
   def new
@@ -51,6 +52,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :rating)
+    params.require(:review).permit(:title, :body, :rating, :photo)
   end
 end

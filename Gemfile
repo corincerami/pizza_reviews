@@ -23,6 +23,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'foundation-rails'
+gem 'carrierwave'
+gem 'fog'
+gem "mini_magick"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -46,6 +49,10 @@ group :development, :test do
   gem 'pry'
   gem 'valid_attribute'
   gem 'orderly'
+end
+
+group :development do
+  gem 'dotenv-rails'
 end
 
 group :test do

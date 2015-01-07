@@ -1,4 +1,5 @@
 require "rails_helper"
+include ApplicationHelper
 
 # As a user,
 # I would like to see all the pizza slice reviews at a certain pizzeria
@@ -16,16 +17,20 @@ feature "User views a review" do
     review = FactoryGirl.create(:review)
     pizzeria = review.pizzeria
     visit pizzerias_path
-    click_on pizzeria.name
+    within(:css, "li.pizzeria-name") do
+      click_on pizzeria.name
+    end
 
-    click_on review.title
+    within(:css, "span.review-title") do
+      click_on review.title
+    end
 
     expect(page).to have_content review.body
     expect(page).to have_content pizzeria.name
     expect(page).to have_content pizzeria.street
     expect(page).to have_content review.rating
-    expect(page).to have_content review.created_at
-    expect(page).to have_content review.updated_at
-    expect(page).to have_content review.user.email
+    expect(page).to have_content format_datetime(review.created_at)
+    expect(page).to have_content format_datetime(review.updated_at)
+    expect(page).to have_content review.user_full_name
   end
 end

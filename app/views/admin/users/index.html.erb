@@ -4,7 +4,7 @@
   <div class = "user"><li><%= user.name %>
   <%= user.username %>
   <%= user.email %>
-  <%= link_to("Delete user", user_path(user), method: :delete, confirm: true, class: "button alert round") %> %></li></div>
+  <%= link_to("Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "button alert round") %></li></div>
 <% end %>
 </ul>
 </div>

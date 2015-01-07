@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def show
     @review = Review.find(params[:id])
+    @user = @review.user
     @comment = Comment.new
     @vote = Vote.new
   end
@@ -40,7 +41,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = current_user.reviews.find(params[:id])
+    @review = Review.find(params[:id])
     if @review.destroy
       flash[:notice] = "Review deleted"
       redirect_to pizzeria_path(@review.pizzeria)

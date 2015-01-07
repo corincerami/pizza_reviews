@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index]
     resources :pizzerias, only: [:index]
+    resources :reviews, only: [:index]
   end
 end

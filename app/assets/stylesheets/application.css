@@ -15,3 +15,24 @@
  *= require foundation_and_overrides
 
  */
+
+.no-decoration {
+   list-style-type: none;
+}
+
+.no-decoration li {
+  padding: 0.5%;
+}
+
+#reviews img {
+  margin: 1%;
+}
+
+#reviews .username {
+  text-align: right;
+}
+
+.centered {
+  display: block;
+  margin: auto;
+}

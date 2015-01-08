@@ -22,14 +22,9 @@ feature "Search pizzerias" do
 
   scenario "fill in search form and find no matches" do
     visit pizzerias_path
-    fill_in "Search", with: "nothing"
+    fill_in "Search", with: "junk"
     click_button "Search Pizzerias"
 
-    expect(page).to have_link @crazy_kitchen.name,
-                              href: pizzeria_path(@crazy_kitchen)
-    expect(page).to have_link @crazy_dough.name,
-                              href: pizzeria_path(@crazy_dough)
-    expect(page).to have_link @regina.name,
-                              href: pizzeria_path(@regina)
+    expect(page).to have_content("No results found") 
   end
 end

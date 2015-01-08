@@ -22,10 +22,6 @@ class Pizzeria < ActiveRecord::Base
     results = where("plainto_tsquery(?) @@ " +
                     "to_tsvector('english', name)",
                     query)
-    if results.empty?
-      results = all
-    end
-    results
   end
 
   mount_uploader :photo, PizzeriaPhotoUploader

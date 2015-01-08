@@ -51,6 +51,6 @@ class PizzeriasController < ApplicationController
 
   def pizzeria_params
     params.require(:pizzeria).permit(:name, :street, :city, :state,
-                                     :zip_code, :phone, :website)
+                                     :zip_code, :phone, :website, :photo)
   end
 end

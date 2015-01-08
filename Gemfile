@@ -25,6 +25,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'carrierwave'
 gem 'fog'
+gem "mini_magick"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -52,10 +53,12 @@ end
 
 group :development do
   gem 'dotenv-rails'
+  gem 'mailcatcher'
 end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'email_spec'
 end
 
 group :production do

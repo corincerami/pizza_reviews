@@ -23,6 +23,7 @@ feature "User creates a pizzeria" do
     fill_in "Zip code",     with: "07110"
     fill_in "Phone number", with: "973-667-7296"
     fill_in "Website",      with: "www.google.com"
+    attach_file("Photo", "spec/fixtures/images/pizzeria_photo.jpg")
     click_on "Create Pizzeria"
 
     expect(page).to have_content "Pizzeria created"
@@ -31,6 +32,7 @@ feature "User creates a pizzeria" do
     expect(page).to have_content "Boston"
     expect(page).to have_content "MA"
     expect(page).to have_content "07110"
+    expect(page).to have_selector("img[alt=\"Regina Pizzeria\"]")
   end
 
   it "enters invalid information" do

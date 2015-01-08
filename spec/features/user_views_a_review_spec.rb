@@ -17,9 +17,13 @@ feature "User views a review" do
     review = FactoryGirl.create(:review)
     pizzeria = review.pizzeria
     visit pizzerias_path
-    click_on pizzeria.name
+    within(:css, "li.pizzeria-name") do
+      click_on pizzeria.name
+    end
 
-    click_on review.title
+    within(:css, "span.review-title") do
+      click_on review.title
+    end
 
     expect(page).to have_content review.body
     expect(page).to have_content pizzeria.name

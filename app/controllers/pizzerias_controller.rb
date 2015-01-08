@@ -25,7 +25,7 @@ class PizzeriasController < ApplicationController
       if @pizzerias.empty?
         flash[:notice] = "No results found"
       else
-        flash[:notice] = "#{@pizzerias.size}" + 
+        flash[:notice] = "#{@pizzerias.size}" +
                          "#{"pizzeria".pluralize(@pizzerias.size)} found!"
       end
     else

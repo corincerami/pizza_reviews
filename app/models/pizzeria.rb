@@ -20,10 +20,10 @@ class Pizzeria < ActiveRecord::Base
 
   def self.search(query)
     results = where("plainto_tsquery(?) @@ " +
-          "to_tsvector('english', name)",
-          query)
+                    "to_tsvector('english', name)",
+                    query)
     if results.empty?
-      results = self.all
+      results = all
     end
     results
   end

@@ -4,7 +4,7 @@
   <div class = "comment"><li><%= comment.body %>
   <%= comment.review.pizzeria.name %>
   <%= comment.review.title %>
-  <%= link_to("Delete comment", comment_path(comment, url: [:admin, comment]), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %></li></div>
+  <%= link_to("Delete comment", admin_comment_path(comment), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %></li></div>
 <% end %>
 </ul>
 </div>

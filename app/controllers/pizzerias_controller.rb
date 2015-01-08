@@ -50,7 +50,7 @@ class PizzeriasController < ApplicationController
   private
 
   def pizzeria_params
-    params.require(:pizzeria).permit(:name, :street, :city, :state, 
+    params.require(:pizzeria).permit(:name, :street, :city, :state,
                                      :zip_code, :phone, :website)
   end
 end

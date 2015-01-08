@@ -4,7 +4,7 @@
   <% if user != current_user %>
     <div class = "user">
       <li><%= "#{user.name} #{user.username} #{user.email}" %>
-          <%= link_to("Delete user", user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %>
+          <%= link_to("Delete user", admin_user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %>
       </li></div>
   <% end %>
 <% end %>

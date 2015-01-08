@@ -20,6 +20,6 @@ feature "admin can delete users", %{
     first(".user").click_link("Delete user")
 
     expect(page).to have_content "User deleted"
-    expect(users.count).to eq 10
+    expect(User.count).to eq 10
   end
 end

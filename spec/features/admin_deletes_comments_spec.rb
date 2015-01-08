@@ -19,9 +19,8 @@ feature "admin can delete comments", %{
     visit admin_comments_path
 
     first(".comment").click_link("Delete comment")
-
     expect(page).to have_content "Comment Deleted"
-    expect(comments.count).to eq 9
+    expect(Comment.count).to eq 9
   end
 
   scenario "unauthorized users are redirected" do

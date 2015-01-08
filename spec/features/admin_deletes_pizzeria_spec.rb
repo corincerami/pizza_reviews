@@ -21,7 +21,7 @@ feature "admin can delete pizzerias", %{
     first(".pizzeria").click_link("Delete pizzeria")
 
     expect(page).to have_content "Pizzeria Deleted"
-    expect(pizzerias.count).to eq 9
+    expect(Pizzeria.count).to eq 9
   end
 
   scenario "unauthorized users are redirected" do

@@ -18,5 +18,15 @@ class Pizzeria < ActiveRecord::Base
     reviews.order(created_at: :desc).limit(3)
   end
 
+  def self.search(query)
+    results = where("plainto_tsquery(?) @@ " +
+          "to_tsvector('english', name)",
+          query)
+    if results.empty?
+      results = self.all
+    end
+    results
+  end
+
   mount_uploader :photo, PizzeriaPhotoUploader
 end

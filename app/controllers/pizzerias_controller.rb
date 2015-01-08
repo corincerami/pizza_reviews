@@ -20,7 +20,11 @@ class PizzeriasController < ApplicationController
   end
 
   def index
-    @pizzerias = Pizzeria.all
+    if params[:query]
+      @pizzerias = Pizzeria.search(params[:query])
+    else
+      @pizzerias = Pizzeria.all
+    end
   end
 
   def edit

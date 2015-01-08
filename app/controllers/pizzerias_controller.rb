@@ -21,7 +21,7 @@ class PizzeriasController < ApplicationController
 
   def index
     if params[:query]
-      @pizzerias = Pizzeria.search(params[:query])
+      @pizzerias = Pizzeria.search(params[:query]).page(params[:page])
       if @pizzerias.empty?
         flash[:notice] = "No results found"
       else
@@ -29,7 +29,7 @@ class PizzeriasController < ApplicationController
                          "#{"pizzeria".pluralize(@pizzerias.size)} found!"
       end
     else
-      @pizzerias = Pizzeria.all
+      @pizzerias = Pizzeria.all.page(params[:page])
     end
   end
 

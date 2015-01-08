@@ -1,0 +1,8 @@
+<div>
+<ul>
+<% @pizzerias.each do |pizzeria| %>
+  <div class = "pizzeria"><li><%= pizzeria.name %>
+  <%= link_to("Delete pizzeria", admin_pizzeria_path(pizzeria), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %></li></div>
+<% end %>
+</ul>
+</div>

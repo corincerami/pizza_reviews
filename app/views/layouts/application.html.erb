@@ -4,7 +4,7 @@
   <title>EatsaPizza</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
-</head>
+  <%= favicon_link_tag 'favicon.ico' %></head>
 <body>
 
   <nav class="top-bar">
@@ -16,6 +16,9 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <% if signed_in? && current_user.admin? %>
+          <li><%= link_to 'Admin Dashboard', admin_dashboards_path %></li>
+        <% end %>
         <% if current_user %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <li><%= link_to current_user.username, user_path(current_user) %></li>
@@ -36,7 +39,7 @@
   <div class="small-12">
     <%= yield %>
   </div>
-  
+
   <%= javascript_include_tag 'application' %>
   <%= javascript_tag do %>
     $(function(){

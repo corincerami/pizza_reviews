@@ -18,7 +18,7 @@ feature "delete a comment", %{
 
     click_on "Delete comment"
 
-    expect(page).to have_content "Comment has been deleted"
+    expect(page).to have_content "Comment Deleted"
   end
 
   scenario "user can't delete another user's comment" do

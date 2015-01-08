@@ -1,0 +1,10 @@
+<div>
+<ul>
+<% @reviews.each do |review| %>
+  <div class = "review"><li><%= review.title %>
+  <%= review.pizzeria.name %>
+  <%= review.rating %>
+  <%= link_to("Delete review", admin_review_path(review), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %></li></div>
+<% end %>
+</ul>
+</div>

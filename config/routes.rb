@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     resources :pizzerias, only: [:index, :destroy]
     resources :reviews, only: [:index, :destroy]
     resources :comments, only: [:index, :destroy]
+    resources :dashboards, only: [:index]
   end
 end

@@ -24,7 +24,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
 gem 'carrierwave'
-gem 'fog'
 gem "mini_magick"
 gem 'yelp'
 gem 'kaminari'
@@ -51,6 +50,10 @@ group :development, :test do
   gem 'pry'
   gem 'valid_attribute'
   gem 'orderly'
+end
+
+group :development, :production do
+  gem 'fog'
 end
 
 group :development do

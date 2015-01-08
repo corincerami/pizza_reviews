@@ -25,6 +25,6 @@ feature "Search pizzerias" do
     fill_in "Search", with: "junk"
     click_button "Search Pizzerias"
 
-    expect(page).to have_content("No results found") 
+    expect(page).to have_content("No results found")
   end
 end

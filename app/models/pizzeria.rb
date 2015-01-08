@@ -19,9 +19,9 @@ class Pizzeria < ActiveRecord::Base
   end
 
   def self.search(query)
-    results = where("plainto_tsquery(?) @@ " +
-                    "to_tsvector('english', name)",
-                    query)
+    where("plainto_tsquery(?) @@ " +
+          "to_tsvector('english', name)",
+          query)
   end
 
   mount_uploader :photo, PizzeriaPhotoUploader

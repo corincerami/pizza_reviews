@@ -27,6 +27,7 @@ gem 'carrierwave'
 gem 'fog'
 gem "mini_magick"
 gem 'yelp'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -54,6 +55,7 @@ end
 
 group :development do
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :test do

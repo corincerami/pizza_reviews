@@ -20,7 +20,7 @@ class PizzeriasController < ApplicationController
   end
 
   def index
-    @pizzerias = Pizzeria.all
+    @pizzerias = Pizzeria.all.page(params[:page])
   end
 
   def edit

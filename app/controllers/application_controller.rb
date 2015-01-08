@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << [:username, :first_name,
                                                         :last_initial, :avatar]
   end
+
+  def authorize!
+    if current_user.nil? || !current_user.admin?
+      flash[:notice] = "You are not authorized"
+      redirect_to root_path
+    end
+  end
 end

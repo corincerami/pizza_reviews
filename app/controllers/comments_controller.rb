@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @vote = Vote.new
     @comment.user = current_user
     @comment.review = @review
+
     if @comment.save
       CommentNotification.notification(@comment).deliver
       redirect_to review_path(@review),
@@ -20,6 +21,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
+    @user = @comment.review.user
     if @comment.update(comment_params)
       redirect_to review_path(@comment.review),
                   notice: "Comment has been updated"
@@ -32,7 +34,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
     if @comment.destroy
       redirect_to review_path(@comment.review),
-                  notice: "Comment has been deleted"
+                  notice: "Comment Deleted"
     else
       flash[:notice] = "Comment could not be deleted"
       render "reviews/show"

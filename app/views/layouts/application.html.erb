@@ -4,7 +4,7 @@
   <title>EatsaPizza</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
-</head>
+  <%= favicon_link_tag 'favicon.ico' %></head>
 <body>
 
   <nav class="top-bar">
@@ -36,7 +36,7 @@
   <div class="small-12">
     <%= yield %>
   </div>
-  
+
   <%= javascript_include_tag 'application' %>
   <%= javascript_tag do %>
     $(function(){

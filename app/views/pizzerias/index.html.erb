@@ -5,6 +5,16 @@
 </div>
 
 <div class="row">
+  <div class="small-6 medium-4 columns">
+    <%= form_tag pizzerias_path, method: :get do %>
+      <%= label_tag :query, "Search" %>
+      <%= text_field_tag :query %>
+      <%= submit_tag "Search Pizzerias" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
   <div class="small-6 columns">
     <% @pizzerias.each do |pizzeria| %>
       <div>

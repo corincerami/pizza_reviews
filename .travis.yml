@@ -3,3 +3,5 @@ rvm:
   - 2.1.0
 before_script:
   - psql -c 'create database eatsa_pizza_test;' -U postgres
+env:
+  - YELP_CONSUMER_KEY='abcdefg' YELP_CONSUMER_SECRET='hijklmn' YELP_TOKEN='12345' YELP_TOKEN_SECRET='67890'

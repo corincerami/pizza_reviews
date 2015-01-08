@@ -1,7 +1,4 @@
-FactoryGirl.define do  factory :admin do
-    
-  end
-
+FactoryGirl.define do  
 
   factory :user do
     first_name "Kerron"

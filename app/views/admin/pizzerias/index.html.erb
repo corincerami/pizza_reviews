@@ -2,7 +2,7 @@
 <ul>
 <% @pizzerias.each do |pizzeria| %>
   <div class = "pizzeria"><li><%= pizzeria.name %>
-  <%= link_to("Delete pizzeria", pizzeria_path(pizzeria), method: :delete, data: {confirm: "Are you sure?"}, class: "button alert round") %></li></div>
+  <%= link_to("Delete pizzeria", pizzeria_path(pizzeria), method: :delete, data: {confirm: "Are you sure?"}, class: "button") %></li></div>
 <% end %>
 </ul>
 </div>

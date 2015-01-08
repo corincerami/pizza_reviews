@@ -10,7 +10,7 @@ feature "admin can delete pizzerias", %{
   } do
 
   scenario "admin can delete a pizzeria" do
-    pizzerias = FactoryGirl.create_list(:pizzeria, 10)
+    FactoryGirl.create_list(:pizzeria, 10)
 
     admin = FactoryGirl.create(:user, admin: true)
 

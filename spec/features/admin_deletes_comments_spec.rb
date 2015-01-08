@@ -10,7 +10,7 @@ feature "admin can delete comments", %{
   } do
 
   scenario "admin can delete comments" do
-    comments = FactoryGirl.create_list(:comment, 10)
+    FactoryGirl.create_list(:comment, 10)
 
     admin = FactoryGirl.create(:user, admin: true)
 

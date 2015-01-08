@@ -10,7 +10,7 @@ feature "admin can delete reviews", %{
   } do
 
   scenario "admin can delete a review" do
-    reviews = FactoryGirl.create_list(:review, 10)
+    FactoryGirl.create_list(:review, 10)
 
     admin = FactoryGirl.create(:user, admin: true)
 

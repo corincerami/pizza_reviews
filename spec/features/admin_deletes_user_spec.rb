@@ -10,7 +10,7 @@ feature "admin can delete users", %{
   } do
 
   scenario "Admin deletes user" do
-    users = FactoryGirl.create_list(:user, 10)
+    FactoryGirl.create_list(:user, 10)
     admin = FactoryGirl.create(:user, admin: true)
 
     sign_in(admin)

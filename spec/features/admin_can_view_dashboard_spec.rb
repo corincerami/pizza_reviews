@@ -23,4 +23,24 @@ feature "admin can view admin dashboard", %{
     expect(page).to have_link("All Reviews", href: admin_reviews_path)
     expect(page).to have_link("All Comments", href: admin_comments_path)
   end
+
+  scenario "users who are not admins cannot view admin dashboard" do
+    user = FactoryGirl.create(:user)
+
+    sign_in(user)
+
+    visit admin_dashboards_path
+
+    expect(page).to have_content "You are not authorized"
+  end
+
+  scenario "user who are not admins do not see Admin Dashboard link" do
+    user = FactoryGirl.create(:user)
+
+    sign_in(user)
+
+    visit root_path
+
+    expect(page).to_not have_content "Admin Dashboard"
+  end
 end

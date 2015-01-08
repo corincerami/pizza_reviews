@@ -21,7 +21,7 @@ feature "admin can delete reviews", %{
     first(".review").click_link("Delete review")
 
     expect(page).to have_content "Review deleted"
-    expect(reviews.count).to eq 10
+    expect(reviews.count).to eq 9
   end
 
   scenario "unauthorized users are redirected" do

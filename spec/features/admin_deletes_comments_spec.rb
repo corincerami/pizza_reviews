@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "admin can delete comments", %{
-  As a admin
+  As an admin
   I want to delete comments
   So that I can keep content updated
 

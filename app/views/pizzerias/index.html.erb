@@ -9,8 +9,11 @@
     <% @pizzerias.each do |pizzeria| %>
       <div>
         <ul class='pizzeria vcard'>
+          <li class="pizzeria-name">
+            <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %><br />
+          </li>
           <li>
-            <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %>
+            <%= link_to image_tag(pizzeria.photo.thumb.url, alt: pizzeria.name), pizzeria_path(pizzeria) %>
           </li>
           <li>
             Latest Reviews:

@@ -205,6 +205,7 @@ GEM
       thin
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_magick (4.0.1)
     mini_portile (0.6.1)
     minitest (5.5.0)
     multi_json (1.10.1)
@@ -360,6 +361,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mailcatcher
+  mini_magick
   orderly
   pg
   pry

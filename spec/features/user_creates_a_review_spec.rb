@@ -7,16 +7,18 @@ feature "User creates a review" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)
-    click_on "Create Review"
+    click_on "Add a Review"
 
     fill_in "Title", with: "Pepperoni"
     fill_in "Body", with: "text text"
     select 5, from: "Rating"
+    attach_file("Photo", "spec/fixtures/images/pizza_slice.jpeg")
     click_on "Create Review"
 
     expect(page).to have_content "Pepperoni"
     expect(page).to have_content "text text"
     expect(page).to have_content "5 stars"
+    expect(page).to have_selector("img[alt=\"Pepperoni\"]")
   end
 
   it "submits a blank form" do
@@ -25,7 +27,7 @@ feature "User creates a review" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)
-    click_on "Create Review"
+    click_on "Add a Review"
     click_on "Create Review"
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Rating can't be blank"
@@ -35,7 +37,7 @@ feature "User creates a review" do
     pizzeria = FactoryGirl.create(:pizzeria)
 
     visit pizzeria_path(pizzeria)
-    click_on "Create Review"
+    click_on "Add a Review"
 
     expect(page).to have_content "You need to sign in or sign up"
   end

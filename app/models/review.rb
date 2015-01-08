@@ -24,4 +24,6 @@ class Review < ActiveRecord::Base
   def score
     votes.sum(:value)
   end
+
+  mount_uploader :photo, ReviewPhotoUploader
 end

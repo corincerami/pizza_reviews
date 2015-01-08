@@ -1,34 +1,49 @@
 <div class="row">
-  <div class="small-12 medium-6 columns">
-    <h2><%= @pizzeria.name %></h2>
-    <h3><%= @pizzeria.street %><br/>
-        <%= @pizzeria.address %></h3>
+  <h2><%= @pizzeria.name %></h2>
+</div>
+<div class="row">
+  <div class="small-12 medium-9 columns">
+    <address>
+      <div class="steet"><%= @pizzeria.street %></div>
+      <div class="address"><%= @pizzeria.address %></div>
+    </address>
+  </div>
+  <div class="small-12 medium-3 columns" style="align:bottom">
+    <%= link_to("Add a Review", new_pizzeria_review_path(@pizzeria), class: "button success round") %>
   </div>
 </div>
 
 <div class="row">
-  <div class="small-6 medium-12 columns">
-    <%= link_to("Edit Pizzeria", edit_pizzeria_path(@pizzeria), class: "button alert round") %>
-    <%= link_to("Delete Pizzeria", pizzeria_path(@pizzeria), method: :delete, confirm: true, class: "button alert round") %>
-    <%= link_to("Create Review", new_pizzeria_review_path(@pizzeria), class: "button alert round") %>
-  </div>
+  <%= image_tag(@pizzeria.photo.url, alt: @pizzeria.name, class: "centered") %>
 </div>
 
 <div class="row">
-  <h3>Reviews:</h3>
+  <div class="small-12 columns">
+    <ul class="inline-list">
+      <li><%= link_to("Edit Pizzeria", edit_pizzeria_path(@pizzeria), class: "button alert radius tiny") %></li>
+      <li><%= link_to("Delete Pizzeria", pizzeria_path(@pizzeria), method: :delete, confirm: true, class: "button alert radius tiny") %></li>
+    </ul>
+  </div>
+</div>
 
-  <ul class="small-block-grid-3">
-    <% @pizzeria.reviews.each do |review| %>
-      <li>
-        <ul class="vcard">
-          <li>
+<ul class="no-decoration" id="reviews">
+  <% @pizzeria.reviews.each do |review| %>
+    <li>
+      <div class="row">
+        <div class="small-1 columns">
+          ⇧
+        </div>
+
+        <div class="small-11 columns">
+          <%= link_to image_tag(review.photo.thumb.url, alt: review.title, class: "th [radius] left"), review_path(review) %>
+          <span class="review-title">
             <%= link_to(review.title, review_path(review)) %>
-          </li>
-          <li>
-            <%= "#{review.rating} stars" %>
-          </li>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-</div>
+          </span>
+          <%= "#{"★" * review.rating}#{"☆" * (5 - review.rating) }" %>
+          <div><%= review.body %></div>
+          <div class="username"><%= review.user.username %></div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

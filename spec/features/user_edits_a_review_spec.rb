@@ -10,13 +10,13 @@ feature "User edits a review" do
     click_on "Edit Review"
 
     fill_in "Title", with: "Edited Title"
-    fill_in "Body", with: "Edited Body"
+    fill_in "Body", with: "#{'y' * 50}"
     select 2, from: "Rating"
     attach_file("Photo", "spec/fixtures/images/pizza_slice.jpeg")
     click_on "Update Review"
 
     expect(page).to have_content "Edited Title"
-    expect(page).to have_content "Edited Body"
+    expect(page).to have_content "#{'y' * 50}"
     expect(page).to have_content "2 stars"
     expect(page).to have_selector("img[alt=\"Edited Title\"]")
   end

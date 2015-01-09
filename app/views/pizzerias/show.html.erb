@@ -20,8 +20,10 @@
 <div class="row">
   <div class="small-12 columns">
     <ul class="inline-list">
+    <% if current_user && current_user.admin? %>
       <li><%= link_to("Edit Pizzeria", edit_pizzeria_path(@pizzeria), class: "button alert radius tiny") %></li>
       <li><%= link_to("Delete Pizzeria", pizzeria_path(@pizzeria), method: :delete, confirm: true, class: "button alert radius tiny") %></li>
+    <% end %>
     </ul>
   </div>
 </div>

@@ -1,8 +1,11 @@
 class Pizzeria < ActiveRecord::Base
-  has_many :reviews
-  has_many :comments, through: :reviews
+  has_many :reviews,
+    dependent: :destroy
+  has_many :comments, through: :reviews,
+    dependent: :destroy
 
   validates :name, presence: true
+  validates :name, length: { in: 2..100 }
   validates :street, presence: true
   validates :city, presence: true
   validates :state, presence: true

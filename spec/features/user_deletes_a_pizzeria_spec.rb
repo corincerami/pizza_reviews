@@ -8,24 +8,14 @@ require "rails_helper"
 # Acceptance Criteria
 # - I can delete a pizzeria so it no longer appears on the index
 
-feature "User deletes a pizzeria" do
-  it "deletes a pizzeria" do
+feature "User not authorized to delete a pizzeria" do
+  it "prevents non admin from deleting a pizzeria" do
     pizzeria = FactoryGirl.create(:pizzeria)
     user = FactoryGirl.create(:user)
     sign_in(user)
 
     visit pizzeria_path(pizzeria)
-    click_on "Delete Pizzeria"
 
-    expect(page).not_to have_content pizzeria.name
-  end
-
-  it "tried to delete without signing in" do
-    pizzeria = FactoryGirl.create(:pizzeria)
-    visit pizzeria_path(pizzeria)
-    click_on "Delete Pizzeria"
-
-    expect(page).to have_content "You need to sign in or sign
-                                  up before continuing"
+    expect(page).to_not have_content "Delete Pizzeria"
   end
 end

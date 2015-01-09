@@ -12,9 +12,9 @@ require "rails_helper"
 
 feature "User edits a pizzeria" do
   it "fills out new valid information" do
-    user = FactoryGirl.create(:user)
+    admin = FactoryGirl.create(:user, admin: true)
     pizzeria = FactoryGirl.create(:pizzeria)
-    sign_in(user)
+    sign_in(admin)
     visit pizzeria_path(pizzeria)
 
     click_on "Edit Pizzeria"
@@ -37,9 +37,9 @@ feature "User edits a pizzeria" do
   end
 
   it "fills out the form incorrectly" do
-    user = FactoryGirl.create(:user)
+    admin = FactoryGirl.create(:user, admin: true)
     pizzeria = FactoryGirl.create(:pizzeria)
-    sign_in(user)
+    sign_in(admin)
     visit pizzeria_path(pizzeria)
 
     click_on "Edit Pizzeria"

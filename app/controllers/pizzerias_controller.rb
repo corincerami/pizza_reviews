@@ -17,6 +17,7 @@ class PizzeriasController < ApplicationController
 
   def show
     @pizzeria = Pizzeria.find(params[:id])
+    @vote = Vote.new
   end
 
   def index

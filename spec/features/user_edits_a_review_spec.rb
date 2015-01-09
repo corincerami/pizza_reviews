@@ -17,7 +17,7 @@ feature "User edits a review" do
 
     expect(page).to have_content "Edited Title"
     expect(page).to have_content "Edited Body"
-    expect(page).to have_content "2 stars"
+    expect(page).to have_content "★★"
     expect(page).to have_selector("img[alt=\"Edited Title\"]")
   end
 

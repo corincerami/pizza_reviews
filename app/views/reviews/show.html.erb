@@ -1,4 +1,3 @@
-<h1><%= @review.title %></h1>
 <% if @comment.errors.any? %>
   <% @comment.errors.full_messages.each do |msg| %>
     <div>
@@ -7,39 +6,46 @@
   <% end %>
 <% end %>
 
-<div class="row">
-  <div class="small-12 medium-6 columns">
+<div class="row top-element">
+  <div class="small-4 columns">
     <%= image_tag(@review.photo.url, alt: @review.title ) %>
+  </div>
+  <div class="small-8 columns">
     <h2><%= link_to(@review.pizzeria.name, pizzeria_path(@review.pizzeria)) %></h2>
     <h3><%= @review.pizzeria.street %><br/>
         <%= @review.pizzeria.address %></h3>
-    <p><%= "#{@review.rating} stars" %></p>
+    <p><%= "#{"★" * @review.rating}#{"☆" * (5 - @review.rating) }" %></p>
+  </div>
+</div>
+<div class="row" data-equalizer>
+  <div class="small-1 columns border" data-equalizer-watch>
+    <%= form_for [@review, @vote] do |f| %>
+      <%= f.hidden_field :value, value: 1 %>
+      <%= f.submit "Upvote", type: :image, src: "http://i59.tinypic.com/n2bd4n.png", class: "upvote"  %>
+    <% end %>
+    <p id="score"><%= @review.score %></p>
+    <%= form_for [@review, @vote] do |f| %>
+      <%= f.hidden_field :value, value: -1 %>
+      <%= f.submit "Downvote", type: :image, src: "http://i62.tinypic.com/243i652.jpg", class: "downvote" %>
+    <% end %>
+  </div>
+  <div class="small-11 columns panel" data-equalizer-watch>
+    <h1><%= @review.title %></h1>
     <p><%= @review.body %></p>
-    <p><%= "#{@review.total_votes} vote(s) on this review" %></p>
-
-    <% if signed_in? && !current_user.has_upvoted?(@review) %>
-      <%= form_for [@review, @vote] do |f| %>
-        <%= f.hidden_field :value, value: 1 %>
-        <%= f.submit "Upvote Review", class: "button alert round" %>
-      <% end %>
-    <% end %>
-    <p><%= "Review's score: #{@review.score}" %></p>
-    <% if signed_in? && !current_user.has_downvoted?(@review) %>
-      <%= form_for [@review, @vote] do |f| %>
-        <%= f.hidden_field :value, value: -1 %>
-        <%= f.submit "Downvote Review", class: "button alert round" %>
-      <% end %>
-    <% end %>
-
     <% if current_user == @review.user %>
-      <%= link_to("Edit Review", edit_review_path(@review), class: "button alert round") %>
-      <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert round") %>
+      <%= link_to("Edit Review", edit_review_path(@review), class: "button alert tiny") %>
+      <%= link_to("Delete Review", review_path(@review), method: :delete, confirm: true, class: "button alert tiny") %>
     <% end %>
-    <p><%= "Posted: #{format_datetime(@review.created_at)}" %></p>
+    <ul class="inline-list float-right" style="list-style: none;">
+      <li class="float-right"><%= "Posted: #{format_datetime(@review.created_at)}" %></li>
+      <li class="float-right"><%= "Last updated: #{format_datetime(@review.updated_at)}" %></li>
+      <li class="float-right"><%= "Reviewed by: #{@review.user.name}" %></li>
+    </ul>
+  </div>
+</div>
 
-    <p><%= "Last updated: #{format_datetime(@review.updated_at)}" %></p>
-    <p><%= "Reviewed by: #{@review.user.name}" %></p>
-
+<div class="row">
+  <div class="small-4 columns">
     <%= form_for [@review, @comment] do |f| %>
       <div>
         <%= f.label :title %>
@@ -52,15 +58,20 @@
       </div>
 
       <div>
-        <%= f.submit "Submit Comment" %>
+        <%= f.submit "Submit Comment", class: "button alert radius tiny" %>
       </div>
     <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-12 columns">
     <div>
       <% @review.comments.each do |comment| %>
-        <div>
-          <%= comment.title %><br/>
+        <div class="panel">
+          <strong><%= comment.title %></strong><br/>
           <%= comment.body %><br/>
+          <%= "Posted by: #{comment.user.name}" %><br/>
           <%= "Comment last updated at #{format_datetime(comment.updated_at)}" %>
           <% if current_user == comment.user %>
             <%= link_to "Edit comment", edit_comment_path(comment) %>

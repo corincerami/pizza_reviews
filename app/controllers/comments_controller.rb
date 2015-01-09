@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.review = @review
 
     if @comment.save
-      CommentNotification.notification(@comment).deliver
+      CommentNotification.notification(@comment).deliver_now
       redirect_to review_path(@review),
                   notice: "Comment has been posted sucessfully"
     else

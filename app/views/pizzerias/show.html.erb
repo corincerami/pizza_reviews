@@ -29,19 +29,26 @@
 <ul class="no-decoration" id="reviews">
   <% @pizzeria.reviews.each do |review| %>
     <li>
-      <div class="row">
-        <div class="small-1 columns">
-          ⇧
+      <div class="row" data-equalizer>
+        <div class="small-1 columns border" data-equalizer-watch>
+          <%= form_for [review, @vote] do |f| %>
+            <%= f.hidden_field :value, value: 1 %>
+            <%= f.submit "Upvote", :type => :image, :src => "http://i59.tinypic.com/n2bd4n.png" %>
+          <% end %>
+          <p id="score"><%= review.score %></p>
+          <%= form_for [review, @vote] do |f| %>
+            <%= f.hidden_field :value, value: -1 %>
+            <%= f.submit "Downvote", :type => :image, :src => "http://i62.tinypic.com/243i652.jpg" %>
+          <% end %>
         </div>
-
-        <div class="small-11 columns">
+        <div class="small-11 columns panel" data-equalizer-watch>
           <%= link_to image_tag(review.photo.thumb.url, alt: review.title, class: "th [radius] left"), review_path(review) %>
           <span class="review-title">
             <%= link_to(review.title, review_path(review)) %>
           </span>
           <%= "#{"★" * review.rating}#{"☆" * (5 - review.rating) }" %>
           <div><%= review.body %></div>
-          <div class="username"><%= review.user.username %></div>
+          <div class="username"><%= review.user.name %></div>
         </div>
       </div>
     </li>

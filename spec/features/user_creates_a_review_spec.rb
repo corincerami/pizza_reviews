@@ -17,7 +17,7 @@ feature "User creates a review" do
 
     expect(page).to have_content "Pepperoni"
     expect(page).to have_content "text text"
-    expect(page).to have_content "5 stars"
+    expect(page).to have_content "★★★★★"
     expect(page).to have_selector("img[alt=\"Pepperoni\"]")
   end
 

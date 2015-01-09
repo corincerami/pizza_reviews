@@ -10,14 +10,14 @@ feature "User creates a review" do
     click_on "Add a Review"
 
     fill_in "Title", with: "Pepperoni"
-    fill_in "Body", with: "text text"
+    fill_in "Body", with: "#{'x' * 50}"
     select 5, from: "Rating"
     attach_file("Photo", "spec/fixtures/images/pizza_slice.jpeg")
     click_on "Create Review"
 
     expect(page).to have_content "Pepperoni"
-    expect(page).to have_content "text text"
     expect(page).to have_content "★★★★★"
+    expect(page).to have_content "#{'x' * 50}"
     expect(page).to have_selector("img[alt=\"Pepperoni\"]")
   end
 

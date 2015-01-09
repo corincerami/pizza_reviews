@@ -8,4 +8,5 @@ describe Pizzeria do
     it { should_not have_valid(:name).when("x", "#{'x' * 101 }", *blank_values) }
   end
     it { should have_many(:reviews).dependent(:destroy)}
+    it { should have_many(:comments).dependent(:destroy)}
 end

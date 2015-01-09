@@ -28,6 +28,7 @@ gem "mini_magick"
 gem 'yelp'
 gem 'kaminari'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -65,6 +66,7 @@ end
 group :test do
   gem 'coveralls', require: false
   gem 'email_spec'
+  gem 'shoulda-matchers'
 end
 
 group :production do

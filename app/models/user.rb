@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :reviews
+  has_many :reviews,
+    dependent: :destroy
   has_many :comments
   has_many :votes
   # Include default devise modules. Others available are:

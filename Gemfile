@@ -55,11 +55,11 @@ end
 
 group :development, :production do
   gem 'fog'
+  gem 'faker'
 end
 
 group :development do
   gem 'dotenv-rails'
-  gem 'faker'
   gem 'mailcatcher'
 end
 

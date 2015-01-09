@@ -6,6 +6,7 @@ class Review < ActiveRecord::Base
   belongs_to :pizzeria
 
   validates :title, presence: true
+  validates :title, length: { in: 1..50 }
   validates :body, presence: true, length: { maximum: 1000 }
   validates :rating, presence: true,
                      numericality: { greater_than_or_equal_to: 1,

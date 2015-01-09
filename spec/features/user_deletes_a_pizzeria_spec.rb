@@ -17,7 +17,7 @@ feature "User deletes a pizzeria" do
     visit pizzeria_path(pizzeria)
     click_on "Delete Pizzeria"
 
-    expect(page).not_to have_content pizzeria.name
+    expect(page).to have_content "You are not authorized"
   end
 
   it "tried to delete without signing in" do

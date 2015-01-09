@@ -1,5 +1,6 @@
 class PizzeriasController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_filter :authorize!, only: [:destroy]
 
   def new
     @pizzeria = Pizzeria.new

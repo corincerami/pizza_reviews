@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def name
-    "#{first_name} #{last_initial}."
+    "#{first_name.capitalize} #{last_initial.upcase}."
   end
 
   def has_voted?(review)

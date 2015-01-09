@@ -13,4 +13,6 @@ RSpec.describe User, :type => :model do
   it { should_not have_valid(:bio).when("#{"x"*1001}") }
 
   it { should have_many(:reviews).dependent(:destroy)}
+
+  it { should have_many(:comments).dependent(:destroy)}
 end

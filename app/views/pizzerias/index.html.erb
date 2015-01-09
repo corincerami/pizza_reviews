@@ -21,28 +21,30 @@
 </div>
 
 <div class="row">
-  <div class="small-6 columns">
+  <div class="small-12 columns">
     <% @pizzerias.each do |pizzeria| %>
-      <div>
-        <ul class='pizzeria vcard'>
+      <div class="row content-box">
+        <ul class='pizzeria small-12 medium-4 columns'>
           <li class="pizzeria-name">
             <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %><br />
           </li>
           <li>
             <%= link_to image_tag(pizzeria.photo.thumb.url, alt: pizzeria.name), pizzeria_path(pizzeria) %>
           </li>
-          <li>
-            Latest Reviews:
-          </li>
-          <li>
-            <% pizzeria.latest_reviews.each do |review| %>
-          </li>
-          <li>
-            <%= link_to(review.title, review_path(review)) %>
-          </li>
-          <li>
-            <%= "#{review.rating} stars" %>
-          </li>
+        </ul>
+        <ul class="small-12 medium-8 columns inline-list reviews">
+          <% pizzeria.latest_reviews.each do |review| %>
+            <li>
+              <div>
+                <%= review.title.first(20) %>
+              </div>
+              <div>
+                <%= link_to(image_tag(review.photo.thumb.url), review_path(review)) %>
+              </div>
+              <div>
+                <%= "#{"★" * review.rating}#{"☆" * (5 - review.rating) }" %>
+              </div>
+            </li>
           <% end %>
         </ul>
       </div>

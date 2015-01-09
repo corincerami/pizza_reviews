@@ -36,3 +36,16 @@
   display: block;
   margin: auto;
 }
+
+.content-box {
+  border: 1px solid #000;
+}
+
+.reviews {
+  padding-top: 7%;
+  padding-left: 3%;
+}
+
+.pizzeria {
+  list-style-type: none;
+}

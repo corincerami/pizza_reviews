@@ -21,10 +21,9 @@ feature "User views all pizzerias" do
     pizzerias.each do |pizzeria|
       expect(page).to have_content(pizzeria.name)
       pizzeria.reviews.each do |review|
-        expect(page).to have_content review.title
-        expect(page).to have_content review.rating
+        expect(page).to have_content review.title.first(20)
       end
-      expect(pizzeria.reviews.last.title).to appear_before(pizzeria.reviews.first.title)
+      expect(pizzeria.reviews.last.title.first(20)).to appear_before(pizzeria.reviews.first.title.first(20))
     end
   end
 end

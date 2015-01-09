@@ -17,3 +17,33 @@ cities.each do |city|
     puts "Pizzeria #{pizza.name} created"
   end
 end
+
+20.times do
+  user = User.create(email: Faker::Internet.email,
+                     password: Faker::Internet.password,
+                     username: Faker::Internet.user_name,
+                     first_name: Faker::Name.first_name,
+                     last_initial: Faker::Lorem.characters(1))
+  puts "User #{user.username} created"
+end
+
+User.all.each do |user|
+  Pizzeria.all.each do |pizzeria|
+    review = Review.create(user: user, 
+                           pizzeria: pizzeria,
+                           title: Faker::Lorem.sentence(3),
+                           body: (Faker::Lorem.paragraphs(2)).join,
+                           rating: rand(1..5))
+    puts "Review with title #{review.title} created"
+  end
+end
+
+User.all.each do |user|
+  Review.all.each do |review|
+    comment = Comment.create(user: user,
+                             review: review,
+                             title: Faker::Lorem.sentence(2),
+                             body: (Faker::Lorem.sentences(2)).join)
+    puts "Comment #{comment.body} was created"
+  end
+end

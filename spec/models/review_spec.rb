@@ -17,4 +17,5 @@ describe Review do
     it { should have_valid(:rating).when("3")}
     it { should_not have_valid(:rating).when("0", "6", *blank_values)}
   end
+    it { should have_many(:comments).dependent(:destroy)}
 end

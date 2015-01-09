@@ -12,4 +12,9 @@ describe Review do
     it { should have_valid(:body).when("#{'x' * 50}", "#{'x' * 1000}") }
     it { should_not have_valid(:body).when("#{'x' * 49}", "#{'x' * 1001 }", *blank_values) }
   end
+
+  describe "#rating" do
+    it { should have_valid(:rating).when("3")}
+    it { should_not have_valid(:rating).when("0", "6", *blank_values)}
+  end
 end

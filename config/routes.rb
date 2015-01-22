@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pizzerias#index'
+  root "homes#index"
   devise_for :users
 
   resources :pizzerias do

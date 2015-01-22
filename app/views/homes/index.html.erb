@@ -1,5 +1,74 @@
-<div class="row">
-  <div class="small-6 medium-4 columns">
-    <%= link_to("View All Pizzerias", pizzerias_path, class: "button alert round") %>
+<section class="hero">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="main-wrapper">
+        <h1>The Pizzerium</h1>
+        <h3>A review site for pizza slices</h3>
+        <hr>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="row">
+    <div class="large-6 columns about-box">
+      <div class="black-box">
+        <h2>Hungry for some Pizza?</h2>
+        <p>At the Pizzarium we understand that good pizza is hard to find. This review site was created for you, the pizza eater to add pizzerias, review pizza slices, and comment on those pizza slice reviews.  We want our pizzas slices GOOD and we want it NOW!</p>
+        <%= link_to("View All Pizzerias", pizzerias_path, class: "secondary small button") %>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="hero-content">
+  <div class="row">
+    <div class="large-8 columns about-content">
+      <h4>Want to know how it works?</h4>
+      <p>You are the pizza-eater. You the hero.</p>
+      <p>You eat the pizza, you take a picture of your pizza slice (the plice not the pizza!), you add the pizzeria here if it doesn't already exist. Then upload the pizza slice and review away.  Make sure your review is valid or it it can be downvoted or upvoted.</p>
+      <p>If you're looking for slices of yummy delicious steamyhot pizza, look no farther!  Just click on the View all Pizzerias above to get started.</p>
+      <p>What are you waiting for?  Go out there and enjoy great pizza!</p>
+
+    </div>
+    <div class="large-4 columns">
+      <ul class="small-block-grid-2">
+        <li><%= image_tag("p1.jpg") %></a></li>
+        <li><%= image_tag("p2.jpg") %></a></li>
+        <li><%= image_tag("p3.jpg") %></a></li>
+        <li><%= image_tag("p4.jpg") %></a></li>
+      </ul>
+    </div>
+  </div>
+  </section>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="panel">
+        <div class="row">
+          <div class="large-9 columns">
+            <h4>About.</h4>
+            <p>The Pizzerium is a Launch Academy Group Project.<br>
+            <p>We implemented a rating system for pizzerias by slice, upvote/downvotes, user sign-up and authentification (Devise), (image uploads Carrierwave), search, email, pagination, and admin namespacing.
+            <p>Please click on our faces to the right and connect to us on LinkedIn.
+          </div>
+          <div class="large-3 columns">
+            <ul class="small-block-grid-2">
+              <li><a href="http://www.linkedin.com/in/chrisccerami"><%= image_tag("chris.jpg") %></a></li>
+              <li><a href="http://www.linkedin.com/in/judngu"><%= image_tag("judy.jpg") %></a></li>
+              <li><a href="http://www.linkedin.com/in/kerronhenry"><%= image_tag("k.jpg") %></a></li>
+              <li><a href="http://www.linkedin.com/in/lizvdk"><%= image_tag("liz.jpg") %></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="row">
+      <div class="large-6 columns">
+        <p>© Copyright 2015</p>
+      </div>
+      <div class="large-6 columns">
+      </div>
+    </div>
+  </footer>

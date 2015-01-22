@@ -213,7 +213,7 @@ footer p, footer a {
 
 .hero {
   padding-bottom: 50px;
-  background-image: url("pizza_header.jpg");
+  background-image: image_url("pizza_header.jpg");
   background-size: cover;
   box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.2);
 }

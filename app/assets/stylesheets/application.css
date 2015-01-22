@@ -46,6 +46,10 @@
   list-style-type: none;
 }
 
+#pizzeria-name {
+  color: red;
+}
+
 .top-element {
   margin-top: 50px;
 }
@@ -268,4 +272,35 @@ footer p, footer a {
 
 .radius.right.button:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.bgIMG
+{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -999;
+  background-size: cover;
+}
+a, a:hover{
+  color: #FFF;
+}
+
+ul.pagination li.current a, ul.pagination li.current button {
+  background: #000;
+  color: white;
+  font-weight: bold;
+  cursor: default;
+}
+ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
+  background: #000;
+}
+
+.th {
+  background-color: #FFF;
 }

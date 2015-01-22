@@ -16,6 +16,7 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <%= link_to("Add a Pizzeria", new_pizzeria_path, class: "secondary tiny button") %>
         <% if signed_in? && current_user.admin? %>
           <li><%= link_to 'Admin Dashboard', admin_dashboards_path %></li>
         <% end %>

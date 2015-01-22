@@ -1,14 +1,14 @@
-<div class="row top-element">
-  <div class="small-6 medium-9 columns">
+<%= image_tag "pizzabk.jpg", :class => "bgIMG" %>
+
+<div class="row top-element black-box">
+  <div class="large-9 medium-9 columns">
     <%= form_tag pizzerias_path, method: :get do %>
-      <%= label_tag :query, "Search" %>
       <%= text_field_tag :query %>
-      <%= submit_tag "Search Pizzerias", class: "button alert radius tiny" %>
+  </div>
+  <div class="large-3 medium-3 columns">
+      <%= submit_tag "Search Pizzerias", class: "secondary tiny button" %>
     <% end %>
   </div>
-  <div class="small-6 medium-3 columns" style="align:bottom">
-    <%= link_to("Add a Pizzeria", new_pizzeria_path, class: "button success round") %>
-</div>
 </div>
 
 <div class="row">
@@ -20,13 +20,16 @@
 <div class="row">
   <div class="small-12 columns">
     <% @pizzerias.each do |pizzeria| %>
-      <div class="row panel">
+      <div class="row black-box">
         <ul class='pizzeria small-12 medium-4 columns'>
-          <li class="pizzeria-name">
-            <%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %><br />
+          <li id="pizzeria-name" class="pizzeria-name">
+            <h4><%= link_to(pizzeria.name, pizzeria_path(pizzeria)) %></h4><br />
           </li>
           <li>
-            <%= link_to image_tag(pizzeria.photo.thumb.url, alt: pizzeria.name), pizzeria_path(pizzeria) %>
+            <div>
+              <%= link_to image_tag(pizzeria.photo.thumb.url, class: "th
+              ", alt: pizzeria.name), pizzeria_path(pizzeria) %>
+            </div>
           </li>
         </ul>
         <ul class="small-12 medium-8 columns inline-list reviews">
@@ -36,7 +39,8 @@
                 <%= review.title.first(20) %>
               </div>
               <div>
-                <%= link_to(image_tag(review.photo.thumb.url), review_path(review)) %>
+                <%= link_to(image_tag(review.photo.thumb.url), review_path(review), class: "th
+              ") %>
               </div>
               <div>
                 <%= "#{"★" * review.rating}#{"☆" * (5 - review.rating) }" %>
@@ -45,6 +49,7 @@
           <% end %>
         </ul>
       </div>
+      <br>
     <% end %>
   </div>
 </div>

@@ -36,12 +36,12 @@
         <div class="small-1 columns black-box" data-equalizer-watch>
           <%= form_for [review, @vote] do |f| %>
             <%= f.hidden_field :value, value: 1 %>
-            <%= f.submit "Upvote", :type => :image, :src => "http://i59.tinypic.com/n2bd4n.png" %>
+            <%= f.submit "Upvote", :type => :image, :src => "http://i58.tinypic.com/xqdndd.png" %>
           <% end %>
-          <p id="score "><%= review.score %></p>
+          <p id="score"><%= review.score %></p>
           <%= form_for [review, @vote] do |f| %>
             <%= f.hidden_field :value, value: -1 %>
-            <%= f.submit "Downvote", :type => :image, :src => "http://i62.tinypic.com/243i652.jpg" %>
+            <%= f.submit "Downvote", :type => :image, :src => "http://i60.tinypic.com/33ekfo8.png" %>
           <% end %>
         </div>
         <div class="small-11 columns black-box" data-equalizer-watch>
